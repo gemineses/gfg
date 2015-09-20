@@ -4,9 +4,9 @@
 	#logs
 */	
 	function printLog($text){
-		$file = 'people.txt';
+		$file = 'logs/system.txt';
 		$current = file_get_contents($file);
-		$current .= "John Smith\n";
+		$current .= $text;
 		file_put_contents($file, $current);
 	}
 	

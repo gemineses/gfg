@@ -1,3 +1,4 @@
+<?php include('mvc/core/init.php');?>
 <!DOCTYPE html>
 <html>
 	<head>
