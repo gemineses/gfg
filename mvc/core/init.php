@@ -1,4 +1,5 @@
 <?php
 	include('logs.php');
-	printlog('sometext123');
+	printlog('new_conection'."\n");
+	include('../config/routes.php');
 ?>
