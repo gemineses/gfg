@@ -1,11 +1,9 @@
 <?php
-	public class init{
-		tag("!DOCTYPE html");
-		tag("html");
-		tag("head");
-		tagn("head");
-		tag("body");
-		tagn("body");
-		tagn("html");
-	}
+	$tags->docType();
+	$tags->html(true);
+	$tags->head(true);
+	$tags->head(false);
+	$tags->body(true);
+	$tags->body(false);
+	$tags->html(false);
 ?>

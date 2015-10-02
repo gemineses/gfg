@@ -7,5 +7,9 @@
 		public $headClose = "</head>";
 		public $bodyOpen = "<body>";
 		public $bodyClose = "</body>";
+		
+		public function docType(){
+			echo $this->docType;
+		}
 	}
 ?>
