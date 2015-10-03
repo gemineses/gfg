@@ -2,10 +2,11 @@
 
 	class LoadLib{
 		public function setLib($type, $name){
+			$routes = new Routes;
 			if($type=='js'){
-				return '<script src="'.$Routes->js.$name.'.js" ></script>';
+				echo '<script src="'.$routes->js.''.$name.'.js" ></script>';
 			}else if($type=='css'){
-				return '<link rel="stylesheet" href="'.$Routes->css.$name.'.css">';
+				echo '<link rel="stylesheet" href="'.$routes->css.''.$name.'.css">';
 			}
 		}
 	}
