@@ -1,3 +1,3 @@
 <?php
-	echo 'hola mundo view';
+	include($routes->view.'templates/admin.htm');
 ?>
