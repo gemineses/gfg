@@ -2,7 +2,6 @@
 # Es un sistema contable y administrativo
 Basado en un mvc propio.
 Con mvc propio me refiero a que la arquitectura al ser creada desde 0 permite tener acceso a editar las librerias y crear las necesarias para poder desarrollar, sin necesidad de importar librerias que en realidad no se utilicen en todo el sistema.
-Aun esta en proceso de prueba ya que se encuentra en la version 0.1
 
 - V 0.4 Modulos
  - Actualmente se esta trabajando en los modulos de contabilidad y nomina
