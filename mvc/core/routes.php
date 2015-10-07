@@ -7,6 +7,7 @@
 		public $base="/";
 		public $logs="logs/";
 		public $js="js/";
+		public $angular="js/modules/";
 		public $css="css/";
 		public $images="images/";
 		public $model="mvc/model/";

@@ -1,12 +1,12 @@
 <?php
 	class Hasht{
-		public $docType = "<!DOCTYPE html>";
-		public $htmlOpen = "<html>";
-		public $htmlClose = "<html/>";
-		public $headOpen = "<head>";
-		public $headClose = "</head>";
-		public $bodyOpen = "<body>";
-		public $bodyClose = "</body>";
+		public $docType = "<!DOCTYPE html>\n";
+		public $htmlOpen = "<html>\n";
+		public $htmlClose = "<html/>\n";
+		public $headOpen = "<head>\n";
+		public $headClose = "</head>\n";
+		public $bodyOpen = "<body>\n";
+		public $bodyClose = "</body>\n";
 		
 		public function docType(){
 			echo $this->docType;
