@@ -15,5 +15,7 @@
 		public $da='mvc/model/DA/';
 		public $tmp='mvc/model/tmp/';
 		public $view="mvc/view/";
+		public $templates="mvc/view/templates/";
+		public $header="mvc/view/header/";
 	}
 ?>
