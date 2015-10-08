@@ -13,5 +13,9 @@
 			$routes = new Routes;	
 			echo "<script src='".$routes->angular."".$module."/".$name.".js' ></script>\n";
 		}
+		public function setPrincipalStyle($name){
+			$routes = new Routes;	
+			echo "<link rel='stylesheet' href='".$routes->css."modules/".$name.".css'>\n";
+		}
 	}
 ?>
