@@ -8,6 +8,7 @@
 	$libs->setAngularModule('main', 'menu');
 	$libs->setLib('css', 'material.min');
 	$libs->setPrincipalStyle('menu');
+	$libs->setPrincipalStyle('contabilidad');
 	echo '<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">';
 	$tags->head(false);
 	$tags->body(true);
