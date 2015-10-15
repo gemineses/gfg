@@ -1,0 +1,20 @@
+.bgImg {
+  background-image: url('../../img/pic/smart_phone_world.jpg');
+}
+
+
+.containerLogin{
+	background-color: #FFF;
+
+	border-radius: 25px;
+}
+
+.containerHeadLogin{
+	background-color: #e040fb;
+	border-radius: 25px 25px 0px 0px;
+}
+
+.logoPos{
+
+	height:70px;
+}

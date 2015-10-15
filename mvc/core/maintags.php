@@ -33,5 +33,9 @@
 				echo $this->bodyClose;
 			}
 		}
+
+		public function bodyClass($c){
+			echo "<body class='".$c."'>";
+		}
 	}
 ?>

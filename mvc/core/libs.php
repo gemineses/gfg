@@ -17,5 +17,10 @@
 			$routes = new Routes;	
 			echo "<link rel='stylesheet' href='".$routes->css."modules/".$name.".css'>\n";
 		}
+		public function setComponents($name){
+			$routes = new Routes;	
+			echo "<script src='".$routes->componentsJs.$name.".js' ></script>\n";
+			echo "<link rel='stylesheet' href='".$routes->componentsCss.$name.".css'>\n";
+		}
 	}
 ?>

@@ -8,9 +8,10 @@
 	$libs->setAngularModule('admin', 'main');
 	$libs->setLib('css', 'material.min');
 	$libs->setLib('css', 'main');
+	$libs->setPrincipalStyle('init');
 	echo '<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">';
 	$tags->head(false);
-	$tags->body(true);
+	$tags->bodyClass('bgImg');
 	include('init.php');
 	$tags->body(false);
 	$tags->html(false);
