@@ -12,7 +12,7 @@
 	$tags->head(false);
 	$tags->body(true);
 	//include($routes->model.'init.php');
-	include($routes->view.'menu.php');
+	include($routes->view.'nomina.php');
 	$tags->body(false);
 	$tags->html(false);
 ?>

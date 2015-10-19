@@ -19,8 +19,8 @@
 		include('mvc/controller/contabilidad.php');
 	}elseif($direct=="/nomina"){
 		include('mvc/controller/nomina.php');
-	}elseif($direct=="/bancos"){
-		include('mvc/controller/bancos.php');
+	}elseif($direct=="/catalogo"){
+		include('mvc/controller/catalogo.php');
 	}elseif($direct=="/facturacion"){
 		include('mvc/controller/facturacion.php');
 	}elseif($direct=="/descargas"){
