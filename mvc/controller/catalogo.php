@@ -5,6 +5,7 @@
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
 	$libs->setLib('js', 'material.min');
 	$libs->setLib('js', 'angular.min');
+	$libs->setLib('js', 'jquery.min');
 	$libs->setAngularModule('conceptos', 'conceptos');
 	$libs->setLib('css', 'material.min');
 	$libs->setPrincipalStyle('menu');

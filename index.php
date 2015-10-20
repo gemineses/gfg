@@ -25,7 +25,34 @@
 		include('mvc/controller/facturacion.php');
 	}elseif($direct=="/descargas"){
 		include('mvc/controller/descargas.php');
-	}else{
+	}
+
+	/*SubTemplates*/
+	elseif($direct=="/b1j9sSh"){
+		include('mvc/view/templates/catalogo/bancos.htm');
+	}
+
+	elseif($direct=="/j93hdsf"){
+		include('mvc/view/templates/catalogo/catalogoCuentas.htm');
+	}
+
+	elseif($direct=="/sag5343"){
+		include('mvc/view/templates/catalogo/conceptos.htm');
+	}
+
+	elseif($direct=="/s34fw1ED"){
+		include('mvc/view/templates/catalogo/departamentos.htm');
+	}
+
+	elseif($direct=="/D3f3trfE"){
+		include('mvc/view/templates/catalogo/empleados.htm');
+	}
+
+	elseif($direct=="/x8Uhsj4"){
+		include('mvc/view/templates/catalogo/puestos.htm');
+	}
+	/*end subtemplates*/
+	else{
 		//echo "not file";
 	}
 
