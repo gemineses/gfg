@@ -14,8 +14,6 @@
 	echo '<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">';
 	$tags->head(false);
 	$tags->body(true);
-	//adding database functionality
-	$DBConfig->setObjs('asset');
 	include($routes->view.'catalogo.php');
 	$tags->body(false);
 	$tags->html(false);

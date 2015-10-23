@@ -1,17 +1,29 @@
 <?php
+	
+	/**
+		clase para conectar 
+		ejemplo
+
+		$DBConfig = new Conn;
+		$conn = $DBConfig->initConn($db_host, $db_username, $db_password);
+		$DBConfig->closeConn($conn);
+	*/
 	class Conn{
 		public function initConn($servername, $username, $password){
-			$conn = new mysqli($servername, $username, $password);
-			if($conn->connect_error){	
-				die("Connection failed:" . $conn->connect_error);
+			$conn = mysql_connect($servername, $username, $password);
+			mysql_select_db('afgs', $conn) or die('Could not select database.');
+			if(!$conn){	
+				die("Connection failed:" . mysql_error());
 			}else{
 				return $conn;
 			}
 		}
-		public function closeConn($conn){
-			$conn->close();
+		public function closeConn(){
+			mysql_close();
 		}
 	}
+
+
 
 	class SQLFxn{
 		private $conn = '';
@@ -74,9 +86,9 @@
 			@return regresara un include con el archivo que se busco
 			TODO: /mvc/core/database.php, programar que en caso de que no encuentre el archivo no lanzar un error si no una alerta donde diga que ese archivo no existe
 		*/
-		public function setObjs($objName){
+		/*public function setObjs($objName){
 			$routes = new Routes;
 			include($routes->da.$objName.'DA.php');
-		}
+		}*/
 	}
 ?>

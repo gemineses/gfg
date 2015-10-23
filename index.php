@@ -1,4 +1,6 @@
 <?php
+
+	//TODO: encontrar una manera mas ordenada de casar estos urls
 	/**
 		Iniciando carga de librerias
 	*/
@@ -10,7 +12,7 @@
 	$uri = $_SERVER['REQUEST_URI'];
 
 	$direct = substr($uri, 4);
-
+	/*Paginas generales*/
 	if($direct=="/"){
 		include('mvc/controller/main.php');
 	}elseif($direct=="/menu"){
@@ -26,6 +28,7 @@
 	}elseif($direct=="/descargas"){
 		include('mvc/controller/descargas.php');
 	}
+	/*termina Paginas generales*/
 
 	/*SubTemplates*/
 	elseif($direct=="/b1j9sSh"){
@@ -52,6 +55,12 @@
 		include('mvc/view/templates/catalogo/puestos.htm');
 	}
 	/*end subtemplates*/
+
+	/*database functions, va y hace una consulta al DA que le pertenece*/
+	elseif(strpos($direct, "/da") !== false){
+		include('mvc/model/DA/dataAccess.php');
+	}
+
 	else{
 		//echo "not file";
 	}

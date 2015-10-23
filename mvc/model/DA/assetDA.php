@@ -1,3 +1,5 @@
 <?php
-	echo "conectado!!";
+	if(strpos($direct, "getAssetsList") !== false){
+		include('mvc/model/DA/assetDA.php');
+	}
 ?>

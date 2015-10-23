@@ -14,10 +14,6 @@
 	/*reading libraries(css, js, etc)*/
 	include('mvc/core/libs.php');
 	$libs = new LoadLib;
-	/*reading databases funtions*/
-	include('mvc/config/db.php');
-	include('mvc/core/database.php');
-	$DBConfig = new SQLFxn;
 	//init all public class
 	
 
