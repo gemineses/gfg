@@ -7,6 +7,7 @@
 	$libs->setLib('js', 'angular.min');
 	$libs->setAngularModule('main', 'menu');
 	$libs->setLib('css', 'material.min');
+	$libs->setLib('css', 'main');
 	$libs->setPrincipalStyle('menu');
 	echo '<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">';
 	$tags->head(false);

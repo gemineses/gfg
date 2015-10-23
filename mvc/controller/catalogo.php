@@ -8,6 +8,7 @@
 	$libs->setLib('js', 'jquery.min');
 	$libs->setAngularModule('conceptos', 'conceptos');
 	$libs->setLib('css', 'material.min');
+	$libs->setLib('css', 'main');
 	$libs->setPrincipalStyle('menu');
 	$libs->setPrincipalStyle('catalogo');
 	echo '<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">';

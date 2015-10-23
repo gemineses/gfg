@@ -10,7 +10,25 @@
   color: #fff;
 }
 
-.blankContainer{
-	
+.blankContainer{	
 	background-color: #fff;
+}
+
+.containerBigCard{
+	background-color: #fff;
+	border-radius: 2px;
+}
+
+
+.containerAlt0{
+	background-color: #AAA;
+	border-radius: 2px;
+}
+.containerAlt1{
+	background-color: #DDD;
+	border-radius: 2px;
+}
+.containerAlt2{
+	background-color: #EEE;
+	border-radius: 2px;
 }
