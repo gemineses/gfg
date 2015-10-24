@@ -30,32 +30,9 @@
 	}
 	/*termina Paginas generales*/
 
-	/*SubTemplates*/
-	elseif($direct=="/b1j9sSh"){
-		include('mvc/view/templates/catalogo/bancos.htm');
+	elseif(strpos($direct, "/catalogo") !== false){
+		include('mvc/controller/catalogo.php');
 	}
-
-	elseif($direct=="/j93hdsf"){
-		include('mvc/view/templates/catalogo/catalogoCuentas.htm');
-	}
-
-	elseif($direct=="/sag5343"){
-		include('mvc/view/templates/catalogo/conceptos.htm');
-	}
-
-	elseif($direct=="/s34fw1ED"){
-		include('mvc/view/templates/catalogo/departamentos.htm');
-	}
-
-	elseif($direct=="/D3f3trfE"){
-		include('mvc/view/templates/catalogo/empleados.htm');
-	}
-
-	elseif($direct=="/x8Uhsj4"){
-		include('mvc/view/templates/catalogo/puestos.htm');
-	}
-	/*end subtemplates*/
-
 	/*database functions, va y hace una consulta al DA que le pertenece*/
 	elseif(strpos($direct, "/da") !== false){
 		include('mvc/model/DA/dataAccess.php');

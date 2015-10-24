@@ -7,4 +7,9 @@ conceptApp.controller('ctrlConceptos', function($scope){
 			$("#containerConcepts").html(data);
 		});
 	};
+	$scope.tipoCatalogos = '';
+	$scope.getCatalogoCuentas = function(){
+		getUrlDataAccess('typeAssetDA', 'getAll');
+		$scope.tipoCatalogos = urlBack;
+	};
 });

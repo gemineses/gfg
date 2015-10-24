@@ -17,5 +17,5 @@
 	//include($routes->model.'init.php');
 	include($routes->view.'contabilidad.php');
 	$tags->body(false);
-	$tags->html(false);
+	$tags->html(false);	
 ?>
