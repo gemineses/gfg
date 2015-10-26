@@ -1,33 +1,25 @@
-<div class="mdl-cell mdl-cell--12-col containerBigCard mdl-shadow--2dp">
-    <div class="mdl-grid bgBancos">
-    	<div class="mld-cell mdl-cell-2-col">
-    		<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="catalogo">
+<div class="mdl-cell mdl-cell--12-col containerBigCard mdl-shadow--2dp" ng-app="conceptApp" ng-controller="ctrlPuestos">
+    <div class="mdl-grid bgPuestos" ng-init="initPuestos();">
+        <div class="mld-cell mdl-cell-2-col">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="catalogo">
                 <i class="material-icons">history</i>Regresar
             </a>
         </div>
-    	<div class="mdl-cell mdl-cell--10-col center"><h2>Bancos</h2></div>
+        <div class="mdl-cell mdl-cell--10-col center"><h2>Puestos</h2></div>
     </div>
     <div class="mdl-grid">
-    	<div class="mdl-cell mdl-cell--12-col">
-			<div class="mdl-grid containerAlt0">
-				<div class="mdl-cell mdl-cell--3-col" onClick="getCatalogoCuentas();">CUENTA ID</div>
-				<div class="mdl-cell mdl-cell--3-col">ID PROPIO</div>
-				<div class="mdl-cell mdl-cell--3-col">NOMBRE</div>
-				<div class="mdl-cell mdl-cell--3-col">TIPO DE CUENTA</div>
-			</div>
-			<div class="mdl-grid containerAlt1">
-				<div class="mdl-cell mdl-cell--3-col">0</div>
-				<div class="mdl-cell mdl-cell--3-col">000-000-000</div>
-				<div class="mdl-cell mdl-cell--3-col">PRUEBA</div>
-				<div class="mdl-cell mdl-cell--3-col">ACTIVO</div>
-			</div>
-			<div class="mdl-grid containerAlt2">
-				<div class="mdl-cell mdl-cell--3-col">0</div>
-				<div class="mdl-cell mdl-cell--3-col">000-000-000</div>
-				<div class="mdl-cell mdl-cell--3-col">PRUEBA</div>
-				<div class="mdl-cell mdl-cell--3-col">ACTIVO</div>
-			</div>
-		</div>
+        <div class="mdl-cell mdl-cell--12-col">
+            <div class="mdl-grid containerAlt0">
+                <div class="mdl-cell mdl-cell--3-col">ID</div>
+                <div class="mdl-cell mdl-cell--3-col">DESCRIPCION</div>
+                <div class="mdl-cell mdl-cell--3-col">DEPARTAMENTO</div>
+            </div>
+            <div class="mdl-grid containerAlt1" ng-repeat="lista in puestos">
+                <div class="mdl-cell mdl-cell--3-col">{{lista[2]}}</div>
+                <div class="mdl-cell mdl-cell--3-col">{{lista[3]}}</div>
+                <div class="mdl-cell mdl-cell--3-col">{{lista[1]}}</div>
+            </div>
+        </div>
     </div>
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--10-col"></div>

@@ -7,6 +7,11 @@
 		include('mvc/model/DA/typeAssetDA.php');
 	}elseif(strpos($direct, "departamentDA") !== false){
 		include('mvc/model/DA/departamentDA.php');
+	}elseif(strpos($direct, "employeeDA") !== false){
+		include('mvc/model/DA/employeeDA.php');
+	}elseif(strpos($direct, "puestosDA") !== false){
+		include('mvc/model/DA/employmentDA.php');
 	}
+
 
 ?>

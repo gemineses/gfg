@@ -64,3 +64,54 @@ conceptApp.controller('ctrlDepartamentos', function($scope){
 		});
 	};
 });
+
+
+conceptApp.controller('ctrlEmpleados', function($scope){
+	$scope.templates=[{"id":0, "name":"departamentos"},{"id":1, "name":"puestos"},{"id":2, "name":"empleados"},{"id":3, "name":"bancos"},{"id":4, "name":"catalogoCuentas"},{"id":5, "name":"conceptos"}];
+	$scope.switchPage = function(id){
+		$.get(id, function(data){
+			$("#containerConcepts").html(data);
+		});
+	};
+	$scope.tipoCatalogos = '';
+	$scope.catalogoLista = '';
+	$scope.initEmpleados = function(){
+		$scope.getAll();		
+	};
+	$scope.getAll = function(){
+		$.ajax({
+			url: 'da/employeeDA/getAll',
+			type: 'post',
+			success: function(json) {
+				$scope.$apply(function () {
+	            	$scope.employeeList = jQuery.parseJSON(json);
+	        	});
+			}
+		});
+	};
+});
+
+conceptApp.controller('ctrlPuestos', function($scope){
+	$scope.templates=[{"id":0, "name":"departamentos"},{"id":1, "name":"puestos"},{"id":2, "name":"empleados"},{"id":3, "name":"bancos"},{"id":4, "name":"catalogoCuentas"},{"id":5, "name":"conceptos"}];
+	$scope.switchPage = function(id){
+		$.get(id, function(data){
+			$("#containerConcepts").html(data);
+		});
+	};
+	$scope.tipoCatalogos = '';
+	$scope.catalogoLista = '';
+	$scope.initPuestos = function(){
+		$scope.getAll();		
+	};
+	$scope.getAll = function(){
+		$.ajax({
+			url: 'da/puestosDA/getAll',
+			type: 'post',
+			success: function(json) {
+				$scope.$apply(function () {
+	            	$scope.puestos = jQuery.parseJSON(json);
+	        	});
+			}
+		});
+	};
+});

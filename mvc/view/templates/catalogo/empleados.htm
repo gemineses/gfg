@@ -1,8 +1,34 @@
-<div class="mdl-cell mdl-cell--12-col">
-	<div class="mdl-grid">
-		<div class="mdl-cell mdl-cell--3-col">EMPLEADO ID</div>
-		<div class="mdl-cell mdl-cell--3-col">NOMBRE(S)</div>
-		<div class="mdl-cell mdl-cell--3-col">APELLIDO(S)</div>
-		<div class="mdl-cell mdl-cell--3-col">FECHA NACIMIENTO</div>
-	</div>
+<div class="mdl-cell mdl-cell--12-col containerBigCard mdl-shadow--2dp" ng-app="conceptApp" ng-controller="ctrlEmpleados">
+    <div class="mdl-grid bgEmpleados" ng-init="initEmpleados();">
+    	<div class="mld-cell mdl-cell-2-col">
+    		<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="catalogo">
+                <i class="material-icons">history</i>Regresar
+            </a>
+        </div>
+    	<div class="mdl-cell mdl-cell--10-col center"><h2>Empleados</h2></div>
+    </div>
+    <div class="mdl-grid">
+    	<div class="mdl-cell mdl-cell--12-col">
+			<div class="mdl-grid containerAlt0">
+				<div class="mdl-cell mdl-cell--3-col">EMPLEADO ID</div>
+				<div class="mdl-cell mdl-cell--3-col">NOMBRE(S)</div>
+				<div class="mdl-cell mdl-cell--3-col">APELLIDO(S)</div>
+				<div class="mdl-cell mdl-cell--3-col">FECHA NACIMIENTO</div>
+			</div>
+			<div class="mdl-grid containerAlt1" ng-repeat="lista in employeeList">
+				<div class="mdl-cell mdl-cell--3-col">{{lista[0]}}</div>
+				<div class="mdl-cell mdl-cell--3-col">{{lista[2]}} {{lista[3]}}</div>
+				<div class="mdl-cell mdl-cell--3-col">{{lista[4]}} {{lista[5]}}</div>
+				<div class="mdl-cell mdl-cell--3-col">{{lista[6]}}</div>
+			</div>
+		</div>
+    </div>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--10-col"></div>
+        <div class="mdl-cell mdl-cell--2-col">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">save</i>Guardar
+            </a>
+        </div>
+    </div>
 </div>
