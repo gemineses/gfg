@@ -7,9 +7,9 @@
 	$conn = $DBConfig->initConn($db_host, $db_username, $db_password);
 
 	//funciones
-	function getTypeAssetList($conn){
+	function getAll($conn){
 		/*reading databases funtions*/
-		$sql = 'SELECT * FROM ASSET';
+		$sql = 'SELECT * FROM DEPARTAMENT';
 		$result = mysql_query($sql);
 		$arr = array();
 		while($row = mysql_fetch_array($result)){
@@ -23,7 +23,7 @@
 	$direct = substr($uri, 8);
 	
 	if(strpos($direct, "getAll") !== false){
-		getTypeAssetList($conn);
+		getAll($conn);
 	}
 
 	//finaliza conexion

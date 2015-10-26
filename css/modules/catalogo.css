@@ -32,3 +32,28 @@
 	background-color: #EEE;
 	border-radius: 2px;
 }
+
+.bgBanco{
+	background: url('../../img/pic/banco.jpg') center / cover;
+}
+
+.bgCCuentas{
+	background: url('../../img/pic/ccuentas.jpg') center / cover;
+}
+
+.bgDepartamentos{
+	background: url('../../img/pic/departamentos.jpg') center / cover;
+}
+
+.bgEmpleados{
+	background: url('../../img/pic/empleados.jpg') center / cover;
+}
+
+.bgPuestos{
+	background: url('../../img/pic/puestos.jpg') center / cover;
+}
+
+.bgConceptos{
+	background: url('../../img/pic/conceptos.jpg') center / cover;
+}
+

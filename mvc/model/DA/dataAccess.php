@@ -5,6 +5,8 @@
 		include('mvc/model/DA/assetDA.php');
 	}elseif(strpos($direct, "typeAssetDA") !== false){
 		include('mvc/model/DA/typeAssetDA.php');
+	}elseif(strpos($direct, "departamentDA") !== false){
+		include('mvc/model/DA/departamentDA.php');
 	}
 
 ?>

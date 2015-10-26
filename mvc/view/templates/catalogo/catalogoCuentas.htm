@@ -1,5 +1,5 @@
-<div class="mdl-cell mdl-cell--12-col containerBigCard mdl-shadow--2dp">
-    <div class="mdl-grid">
+<div class="mdl-cell mdl-cell--12-col containerBigCard mdl-shadow--2dp" ng-app="conceptApp" ng-controller="ctrlConceptos">
+    <div class="mdl-grid bgCCuentas" ng-init="initCatalogoCuentas();">
     	<div class="mld-cell mdl-cell-2-col">
     		<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="catalogo">
                 <i class="material-icons">history</i>Regresar
@@ -7,26 +7,21 @@
         </div>
     	<div class="mdl-cell mdl-cell--10-col center"><h2>Catalogo de cuentas</h2></div>
     </div>
-    <div class="mdl-grid">IMG</div>
     <div class="mdl-grid">
     	<div class="mdl-cell mdl-cell--12-col">
 			<div class="mdl-grid containerAlt0">
-				<div class="mdl-cell mdl-cell--3-col" onClick="getCatalogoCuentas();">CUENTA ID</div>
+				<div class="mdl-cell mdl-cell--3-col">CUENTA ID</div>
 				<div class="mdl-cell mdl-cell--3-col">ID PROPIO</div>
 				<div class="mdl-cell mdl-cell--3-col">NOMBRE</div>
 				<div class="mdl-cell mdl-cell--3-col">TIPO DE CUENTA</div>
 			</div>
-			<div class="mdl-grid containerAlt1">
-				<div class="mdl-cell mdl-cell--3-col">0</div>
-				<div class="mdl-cell mdl-cell--3-col">000-000-000</div>
-				<div class="mdl-cell mdl-cell--3-col">PRUEBA</div>
-				<div class="mdl-cell mdl-cell--3-col">ACTIVO</div>
-			</div>
-			<div class="mdl-grid containerAlt2">
-				<div class="mdl-cell mdl-cell--3-col">0</div>
-				<div class="mdl-cell mdl-cell--3-col">000-000-000</div>
-				<div class="mdl-cell mdl-cell--3-col">PRUEBA</div>
-				<div class="mdl-cell mdl-cell--3-col">ACTIVO</div>
+			<div class="mdl-grid containerAlt1" ng-repeat="lista in catalogoLista">
+				<div class="mdl-cell mdl-cell--3-col">{{lista[0]}}</div>
+				<div class="mdl-cell mdl-cell--3-col">{{lista[1]}}</div>
+				<div class="mdl-cell mdl-cell--3-col">{{lista[2]}}</div>
+				<div class="mdl-cell mdl-cell--3-col" ng-if="lista[3] == 1">{{tipoCatalogos[0].TAS_DESC}}</div>
+				<div class="mdl-cell mdl-cell--3-col" ng-if="lista[3] == 2">{{tipoCatalogos[1].TAS_DESC}}</div>
+				<div class="mdl-cell mdl-cell--3-col" ng-if="lista[3] == 3">{{tipoCatalogos[2].TAS_DESC}}</div>
 			</div>
 		</div>
     </div>
