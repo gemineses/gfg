@@ -8,7 +8,6 @@
 	}
 
 	if($ban){
-		print_r($_SESSION);
 		header("Location: /gfg/menu");
 	}else{
 		$tags->docType();
