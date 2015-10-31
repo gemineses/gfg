@@ -1,0 +1,74 @@
+<div ng-app="mainApp" ng-controller="ctrlAccounts">
+    <div class="mdl-grid" ng-init="getCompanies();getAccounts();"></div>
+    <div class="mdl-grid"></div>
+    <div class="mdl-grid"></div>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--1-col"></div>
+        <div class="mdl-cell mdl-cell--10-col bgWhite">
+            <div class="mdl-grid title-main">
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--10-col center"><h3>Cuentas de usuarios</h3></div>
+                <div class="mdl-cell mdl-cell--1-col"></div>
+            </div>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--2-col">Nombre</div>
+                <div class="mdl-cell mdl-cell--2-col">Correo</div>
+                <div class="mdl-cell mdl-cell--2-col">Contrase&ntilde;a</div>
+                <div class="mdl-cell mdl-cell--2-col">Empresa</div>
+            </div>
+
+            <div class="mdl-grid" ng-repeat='ac in acc'>
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--2-col">{{ac.ACC_USER}}</div>
+                <div class="mdl-cell mdl-cell--2-col">{{ac.ACC_EMAIL}}</div>
+                <div class="mdl-cell mdl-cell--2-col"></div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <div ng-repeat='c in comp' ng-if='c[0]==ac.COM_ID'>{{c[1]}}</div>
+                </div>
+            </div>
+
+
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="txtName" />
+                        <label class="mdl-textfield__label" for="txtName">Nombre usuario</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="txtEmail" />
+                        <label class="mdl-textfield__label" for="txtEmail">Correo</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="txtPass" />
+                        <label class="mdl-textfield__label" for="txtPass">Contrase&ntilde;a</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                     <div class="mdl-textfield mdl-js-textfield">
+                        <select class="mdl-textfield__input" type="text" id="txtComp">
+                            <option value='{{c[0]}}' ng-repeat='c in comp'>{{c[1]}}</option>
+                        </select>
+                        <label class="mdl-textfield__label" for="txtComp"></label>
+                      </div>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click='save();'>Agregar</button>
+                </div>
+            </div>
+
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--1-col">
+                </div>
+                
+                <div class="mdl-cell mdl-cell--10-col">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

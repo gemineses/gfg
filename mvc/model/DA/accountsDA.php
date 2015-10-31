@@ -8,7 +8,7 @@
 
 	//funciones
 	function getAll($conn){
-		$sql = 'SELECT * FROM COMPANY';
+		$sql = 'SELECT * FROM ACCOUNT';
 		$result = mysql_query($sql);
 		$arr = array();
 		while($row = mysql_fetch_array($result)){
@@ -16,10 +16,9 @@
 		}
 		echo json_encode($arr);
 	}
-
 	function setNew($conn){
 		//TODO: dejar de tirar el query asi de feo y usar los objetos de la carpeta obj y agregar el logo y el color
-		$sql = "INSERT INTO COMPANY VALUES(0, '".$_POST['txtName']."', '', '', 0,0,0,0)";
+		$sql = "INSERT INTO ACCOUNT VALUES(0, '".$_POST['txtName']."', '".$_POST['txtEmail']."', md5('".$_POST['txtPass']."'), ".$_POST['txtComp'].")";
 		mysql_query($sql);
 	}
 

@@ -13,9 +13,6 @@
             <div class="mdl-grid">
                 <div class="mdl-cell mdl-cell--1-col"></div>
                 <div class="mdl-cell mdl-cell--2-col">Empresa</div>
-                <div class="mdl-cell mdl-cell--2-col">Usuario</div>
-                <div class="mdl-cell mdl-cell--2-col">Correo</div>
-                <div class="mdl-cell mdl-cell--1-col">Contrase&ntilde;a</div>
                 <!--<div class="mdl-cell mdl-cell--1-col">Contabilidad</div>
                 <div class="mdl-cell mdl-cell--1-col">Nomina</div>
                 <div class="mdl-cell mdl-cell--1-col">Facturacion</div>
@@ -26,12 +23,6 @@
                 <div class="mdl-cell mdl-cell--1-col"></div>
                 <div class="mdl-cell mdl-cell--2-col">
                     {{company[1]}}
-                </div>
-                <div class="mdl-cell mdl-cell--2-col">
-                   {{company[9]}}
-                </div>
-                <div class="mdl-cell mdl-cell--2-col">
-                    {{company[10]}}
                 </div>
                 <!--TODO: filtros para modulos<div class="mdl-cell mdl-cell--1-col">
                     <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-{{$index}}-1">
@@ -58,28 +49,14 @@
                 <div class="mdl-cell mdl-cell--1-col"></div>
                 <div class="mdl-cell mdl-cell--2-col">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="sample3" />
-                        <label class="mdl-textfield__label" for="sample3">Nombre empresa</label>
+                        <input class="mdl-textfield__input" type="text" id="txtName" />
+                        <label class="mdl-textfield__label" for="txtName">Nombre empresa</label>
                     </div>
                 </div>
-                <div class="mdl-cell mdl-cell--2-col">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="sample3" />
-                        <label class="mdl-textfield__label" for="sample3">Usuario</label>
-                    </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click='save();'>Agregar</button>
                 </div>
-                <div class="mdl-cell mdl-cell--2-col">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="sample3" />
-                        <label class="mdl-textfield__label" for="sample3">Correo</label>
-                    </div>
-                </div>
-                <div class="mdl-cell mdl-cell--2-col">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="sample3" />
-                        <label class="mdl-textfield__label" for="sample3">Contrase&ntilde;a</label>
-                    </div>
-                </div>
+                
                 <!--<div class="mdl-cell mdl-cell--1-col">
                     <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
                         <input type="checkbox" id="switch-1" class="mdl-switch__input" checked />
@@ -100,12 +77,6 @@
                 </div>-->
             </div>
 
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--1-col"></div>
-                <div class="mdl-cell mdl-cell--1-col">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Guardar</button>
-                </div>
-            </div>
             <div class="mdl-grid">
                 <div class="mdl-cell mdl-cell--1-col">
                 </div>

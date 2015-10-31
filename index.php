@@ -7,7 +7,7 @@ session_start();
 	if($_SESSION['user']==''){
 		include('mvc/controller/main.php');
 	}else{
-		if($_SESSION['compId']='1'){
+		if($_SESSION['compId']=='1'){
 			$uri = $_SERVER['REQUEST_URI'];
 			$direct = substr($uri, 4);
 
@@ -15,10 +15,13 @@ session_start();
 				include('mvc/controller/admin.php');
 			}elseif($direct=="/nuevaEmpresa"){
 				include('mvc/controller/adminNueva.php');
-			}elseif($direct=="/editEmpresa"){
-				include('mvc/controller/adminEdit.php');
+			}elseif($direct=="/cuentasEmpresa"){
+				include('mvc/controller/cuentasEmpresa.php');
 			}elseif(strpos($direct, "/da") !== false){
 				include('mvc/model/DA/dataAccess.php');
+			}elseif($direct=="/sessionOff"){
+				session_destroy();
+				include('mvc/controller/main.php');
 			}else{
 				include('mvc/controller/admin.php');
 			}

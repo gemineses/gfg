@@ -1,4 +1,5 @@
 <?php
+	//TODO: crear logica para unir account con accounts
 	//funciones
 	function logIn($user, $pass){
 		include('mvc/config/db.php');
@@ -11,7 +12,7 @@
 		$result = mysql_query($sql);
 		while($row = mysql_fetch_array($result)){
 			$_SESSION['user'] = $_POST['txtUser'];
-			$_SESSION['compId'] = $row->COM_ID;
+			$_SESSION['compId'] = $row[0];
 			return true;
 		}
 		$DBConfig->closeConn();
