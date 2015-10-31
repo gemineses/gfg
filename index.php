@@ -17,6 +17,8 @@ session_start();
 				include('mvc/controller/adminNueva.php');
 			}elseif($direct=="/editEmpresa"){
 				include('mvc/controller/adminEdit.php');
+			}elseif(strpos($direct, "/da") !== false){
+				include('mvc/model/DA/dataAccess.php');
 			}else{
 				include('mvc/controller/admin.php');
 			}

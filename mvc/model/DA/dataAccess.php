@@ -13,6 +13,8 @@
 		include('mvc/model/DA/employmentDA.php');
 	}elseif(strpos($direct, "accDA") !== false){
 		include('mvc/model/DA/accountDA.php');
+	}elseif(strpos($direct, "companyDA") !== false){
+		include('mvc/model/DA/companyDA.php');
 	}
 
 

@@ -4,8 +4,6 @@
 	$tags->head(true);
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
 	$libs->setLib('js', 'material.min');
-	$libs->setLib('js', 'angular.min');
-	$libs->setAngularModule('main', 'menu');
 	$libs->setLib('css', 'material.min');
 	$libs->setLib('css', 'main');
 	$libs->setPrincipalStyle('adminEmpresas');

@@ -1,27 +1,116 @@
-<div class="mdl-grid"></div>
-<div class="mdl-grid"></div>
-<div class="mdl-grid"></div>
-<div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--1-col"></div>
-    <div class="mdl-cell mdl-cell--10-col bgWhite">
-        <div class="mdl-grid title-main">
-            <div class="mdl-cell mdl-cell--1-col"></div>
-            <div class="mdl-cell mdl-cell--10-col center"><h3>Administraci&oacute;n de empresas</h3></div>
-            <div class="mdl-cell mdl-cell--1-col"></div>
-        </div>
-        <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--1-col"></div>
-            <div class="mdl-cell mdl-cell--4-col">Nombre</div>
-            <div class="mdl-cell mdl-cell--2-col"></div>
-            <div class="mdl-cell mdl-cell--1-col">Contabilidad</div>
-            <div class="mdl-cell mdl-cell--1-col">Nomina</div>
-            <div class="mdl-cell mdl-cell--1-col">Facturacion</div>
-            <div class="mdl-cell mdl-cell--1-col">Configuracion</div>
-        </div>
-        <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--1-col">
+<div ng-app="mainApp" ng-controller="ctrlCompany">
+    <div class="mdl-grid" ng-init="getCompanies();"></div>
+    <div class="mdl-grid"></div>
+    <div class="mdl-grid"></div>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--1-col"></div>
+        <div class="mdl-cell mdl-cell--10-col bgWhite">
+            <div class="mdl-grid title-main">
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--10-col center"><h3>Administraci&oacute;n de empresas</h3></div>
+                <div class="mdl-cell mdl-cell--1-col"></div>
             </div>
-            <div class="mdl-cell mdl-cell--10-col">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--2-col">Empresa</div>
+                <div class="mdl-cell mdl-cell--2-col">Usuario</div>
+                <div class="mdl-cell mdl-cell--2-col">Correo</div>
+                <div class="mdl-cell mdl-cell--1-col">Contrase&ntilde;a</div>
+                <!--<div class="mdl-cell mdl-cell--1-col">Contabilidad</div>
+                <div class="mdl-cell mdl-cell--1-col">Nomina</div>
+                <div class="mdl-cell mdl-cell--1-col">Facturacion</div>
+                <div class="mdl-cell mdl-cell--1-col"></div>-->
+            </div>
+
+            <div class="mdl-grid" ng-repeat="company in comp">
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    {{company[1]}}
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                   {{company[9]}}
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    {{company[10]}}
+                </div>
+                <!--TODO: filtros para modulos<div class="mdl-cell mdl-cell--1-col">
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-{{$index}}-1">
+                        <input type="checkbox" id="switch-{{$index}}-1" class="mdl-switch__input" checked />
+                        <span class="mdl-switch__label"></span>
+                    </label>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-{{$index}}-2">
+                        <input type="checkbox" id="switch-{{$index}}-2" class="mdl-switch__input" checked />
+                        <span class="mdl-switch__label"></span>
+                    </label>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-{{$index}}-3">
+                        <input type="checkbox" id="switch-{{$index}}-3" class="mdl-switch__input" checked />
+                        <span class="mdl-switch__label"></span>
+                    </label>
+                </div>-->
+            </div>
+
+
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="sample3" />
+                        <label class="mdl-textfield__label" for="sample3">Nombre empresa</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="sample3" />
+                        <label class="mdl-textfield__label" for="sample3">Usuario</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="sample3" />
+                        <label class="mdl-textfield__label" for="sample3">Correo</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="sample3" />
+                        <label class="mdl-textfield__label" for="sample3">Contrase&ntilde;a</label>
+                    </div>
+                </div>
+                <!--<div class="mdl-cell mdl-cell--1-col">
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+                        <input type="checkbox" id="switch-1" class="mdl-switch__input" checked />
+                        <span class="mdl-switch__label"></span>
+                    </label>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
+                        <input type="checkbox" id="switch-2" class="mdl-switch__input" checked />
+                        <span class="mdl-switch__label"></span>
+                    </label>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-3">
+                        <input type="checkbox" id="switch-3" class="mdl-switch__input" checked />
+                        <span class="mdl-switch__label"></span>
+                    </label>
+                </div>-->
+            </div>
+
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Guardar</button>
+                </div>
+            </div>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--1-col">
+                </div>
+                <div class="mdl-cell mdl-cell--10-col">
+                </div>
             </div>
         </div>
     </div>
