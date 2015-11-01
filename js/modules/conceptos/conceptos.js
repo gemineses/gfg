@@ -245,3 +245,86 @@ conceptApp.controller('ctrlPuestos', function($scope){
 
 	};
 });
+
+
+conceptApp.controller('ctrlCatalogoCuentas', function($scope){
+	$scope.templates=[{"id":0, "name":"departamentos"},{"id":1, "name":"puestos"},{"id":2, "name":"empleados"},{"id":3, "name":"bancos"},{"id":4, "name":"catalogoCuentas"},{"id":5, "name":"conceptos"}];
+	$scope.switchPage = function(id){
+		$.get(id, function(data){
+			$("#containerConcepts").html(data);
+		});
+	};
+	$scope.tipoCatalogos = '';
+	$scope.catalogoLista = '';
+	$scope.catalogo = '';
+	$scope.initCatalogoCuentas = function(){
+		$scope.getTipoCatalogoCuentas();
+		$scope.getListaCatalogoCuentas();
+		$scope.getListaCatalogoDeEmpresa();
+		
+	};
+	$scope.getTipoCatalogoCuentas = function(){
+		$.ajax({
+			url: 'da/typeAssetDA/getAll',
+			type: 'post',
+			success: function(json) {
+				$scope.$apply(function () {
+	            	$scope.tipoCatalogos = jQuery.parseJSON(json);
+	        	});
+			}
+		});
+	};
+	$scope.getListaCatalogoCuentas = function(){
+		$.ajax({
+			url: 'da/assetDA/getAll',
+			type: 'post',
+			success: function(json) {
+				$scope.$apply(function () {
+	            	$scope.catalogoLista = jQuery.parseJSON(json);
+	        	});
+			}
+		});
+	};
+	$scope.getListaCatalogoDeEmpresa = function(){
+		$.ajax({
+			url: 'da/assetDA/getCompanyAll',
+			type: 'post',
+			success: function(json) {
+				$scope.$apply(function () {
+	            	$scope.catalogo = jQuery.parseJSON(json);
+	        	});
+			}
+		});
+	};
+	$scope.save = function(){
+		var form = document.createElement('form');
+		var inputName = document.createElement('input');
+		var inputCuenta = document.createElement('input');
+		
+		form.method = 'POST';
+		form.action = '';
+
+		inputName.value = document.getElementById('txtIdPropio').value;
+		inputName.name = 'txtIdPropio';
+		form.appendChild(inputName);
+
+		inputCuenta.value = document.getElementById('txtCuenta').value;
+		inputCuenta.name = 'txtCuenta';
+		form.appendChild(inputCuenta);
+
+		//TODO: hacer una validacion en caso de que llegue vacio
+		document.body.appendChild(form);
+
+		var str = $( "form" ).serialize();
+
+		$.ajax({
+			url: 'da/assetDA/setCompanyAsset',
+			data: str,
+			type: 'post',
+			success: function() {
+				location.reload();
+			}
+		});
+
+	};
+});

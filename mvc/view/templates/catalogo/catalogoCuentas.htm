@@ -1,4 +1,4 @@
-<div class="mdl-cell mdl-cell--12-col containerBigCard mdl-shadow--2dp" ng-app="conceptApp" ng-controller="ctrlConceptos">
+<div class="mdl-cell mdl-cell--12-col containerBigCard mdl-shadow--2dp" ng-app="conceptApp" ng-controller="ctrlCatalogoCuentas">
     <div class="mdl-grid bgCCuentas" ng-init="initCatalogoCuentas();">
     	<div class="mld-cell mdl-cell-2-col">
     		<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="catalogo">
@@ -15,22 +15,41 @@
 				<div class="mdl-cell mdl-cell--3-col">NOMBRE</div>
 				<div class="mdl-cell mdl-cell--3-col">TIPO DE CUENTA</div>
 			</div>
-			<div class="mdl-grid containerAlt1" ng-repeat="lista in catalogoLista">
-				<div class="mdl-cell mdl-cell--3-col">{{lista[0]}}</div>
-				<div class="mdl-cell mdl-cell--3-col">{{lista[1]}}</div>
-				<div class="mdl-cell mdl-cell--3-col">{{lista[2]}}</div>
-				<div class="mdl-cell mdl-cell--3-col" ng-if="lista[3] == 1">{{tipoCatalogos[0].TAS_DESC}}</div>
-				<div class="mdl-cell mdl-cell--3-col" ng-if="lista[3] == 2">{{tipoCatalogos[1].TAS_DESC}}</div>
-				<div class="mdl-cell mdl-cell--3-col" ng-if="lista[3] == 3">{{tipoCatalogos[2].TAS_DESC}}</div>
+			<div class="mdl-grid containerAlt1" ng-repeat="cat in catalogo">
+                <div class="mdl-cell mdl-cell--12-col">
+                    <div class="mdl-grid containerAlt1" ng-repeat='catLista in catalogoLista' ng-if='cat.ASS_ID == catLista.ASS_ID'>
+                        <div class="mdl-cell mdl-cell--3-col">{{cat.CAS_ID}}</div>
+                        <div class="mdl-cell mdl-cell--3-col">{{cat.CAS_OWN_ID}}</div>
+                        <div class="mdl-cell mdl-cell--3-col">{{catLista.ASS_DESC}}</div>
+                        <div class="mdl-cell mdl-cell--3-col" ng-if="catLista.TAS_ID == 1">{{tipoCatalogos[0].TAS_DESC}}</div>
+                        <div class="mdl-cell mdl-cell--3-col" ng-if="catLista.TAS_ID == 2">{{tipoCatalogos[1].TAS_DESC}}</div>
+                        <div class="mdl-cell mdl-cell--3-col" ng-if="catLista.TAS_ID == 3">{{tipoCatalogos[2].TAS_DESC}}</div>
+                    </div>
+                </div>
 			</div>
+            <div class="mdl-grid containerAlt1">
+                <div class="mdl-cell mdl-cell--3-col"></div>
+                <div class="mdl-cell mdl-cell--3-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="txtIdPropio" />
+                        <label class="mdl-textfield__label" for="txtIdPropio">Id propio</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--3-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <select class="mdl-textfield__input" type="text" id="txtCuenta" ng-model='catSelect'>
+                            <option ng-repeat='cat in catalogoLista' value='{{cat.ASS_ID}}'>{{cat.ASS_DESC}}</option>
+                        </select>
+                        <label class="mdl-textfield__label" for="txtCuenta"></label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click='save();'>
+                        <i class="material-icons">save</i>Agregar 
+                    </button>
+                </div>
+            </div>
+
 		</div>
-    </div>
-    <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--10-col"></div>
-        <div class="mdl-cell mdl-cell--2-col">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                <i class="material-icons">save</i>Guardar
-            </a>
-        </div>
     </div>
 </div>
