@@ -4,6 +4,7 @@ Basado en un mvc propio.
 Con mvc propio me refiero a que la arquitectura al ser creada desde 0 permite tener acceso a editar las librerias y crear las necesarias para poder desarrollar, sin necesidad de importar librerias que en realidad no se utilicen en todo el sistema.
 
 - V 0.1 
+ - Modulo para agregar cuentas contables y se filtran por empresa para su propio Id 
  - Ya tiene un modulo para administrar empresas y cuentas de usuario
  - Ahora se valida si la sesion esta iniciada para poder entrar al sistema
  - Consultas de catalogos (catalogo de cuentas contables, empleados, puestos y departamentos)
