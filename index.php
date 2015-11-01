@@ -17,6 +17,8 @@ session_start();
 				include('mvc/controller/adminNueva.php');
 			}elseif($direct=="/cuentasEmpresa"){
 				include('mvc/controller/cuentasEmpresa.php');
+			}elseif($direct=="/cuentasContables"){
+				include('mvc/controller/cuentasContables.php');
 			}elseif(strpos($direct, "/da") !== false){
 				include('mvc/model/DA/dataAccess.php');
 			}elseif($direct=="/sessionOff"){

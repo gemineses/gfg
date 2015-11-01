@@ -1,126 +1,196 @@
-<div class="mdl-grid"></div>
-<div class="mdl-grid"></div>
-<div class="mdl-grid"></div>
-<div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--1-col"></div>
-    <div class="mdl-cell mdl-cell--10-col bgWhite">
-        <div class="mdl-grid title-main">
-            <div class="mdl-cell mdl-cell--1-col"></div>
-            <div class="mdl-cell mdl-cell--3-col"><img src="img/logo/main.png" class="demo-avatar"></div>
-            <div class="mdl-cell mdl-cell--7-col"><h3>Nombre empresa</h3></div>
-            <div class="mdl-cell mdl-cell--1-col"></div>
-            <div class="mdl-cell mdl-cell--4-col"></div>
-            <div class="mdl-cell mdl-cell--7-col"><h5>Libro diario desde 01/01/2000</h5></div>
-            <div class="mdl-cell mdl-cell--1-col"></div>
-            
-        </div>
-        <div class="mdl-grid bgWhite">
-            <div class="mdl-cell mdl-cell--2-col"></div>
-            <div class="mdl-cell mdl-cell--6-col center">
-                <h6>-1-</h6>
+<div ng-app='mainApp' ng-controller='ctrlContabilidad'>
+    <div class="mdl-grid" ng-init='init();'></div>
+    <div class="mdl-grid"></div>
+    <div class="mdl-grid"></div>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--1-col"></div>
+        <div class="mdl-cell mdl-cell--10-col bgWhite">
+            <div class="mdl-grid title-main">
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--3-col"><img src="img/logo/main.png" class="demo-avatar"></div>
+                <div class="mdl-cell mdl-cell--7-col"><h3>{{comp[0].COM_NAME}}</h3></div>
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--4-col"></div>
+                <div class="mdl-cell mdl-cell--7-col"><h5>Libro diario desde {{generalJournalId[0].GJO_DATE_INIT}}</h5></div>
+                <div class="mdl-cell mdl-cell--1-col"></div>
             </div>
-            <div class="mdl-cell mdl-cell--2-col">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="fecha1" />
-                    <label class="mdl-textfield__label" for="fecha1">Fecha</label>
+            <div ng-repeat='j in dataJournal'>
+                <div class="mdl-grid bgWhite">
+                    <div class="mdl-cell mdl-cell--2-col"></div>
+                    <div class="mdl-cell mdl-cell--6-col center">
+                        <h6>-{{j.JO_ORDER}}-</h6>
+                    </div>
+                    <div class="mdl-cell mdl-cell--2-col">
+                        <h6>{{j.JO_DATE_INIT}}</h6>
+                    </div>
+                </div>
+                <div class="mdl-grid containerDiario" ng-repeat='sub in subJournal'>
+                    {{subJournal}}
+                    <div class="mdl-cell mdl-cell--2-col"></div>
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--6-col">
+                                <div class="mdl-grid">
+                                    <div class="mdl-cell mdl-cell--12-col">
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <input class="mdl-textfield__input" type="text" id="cuenta11" />
+                                            <label class="mdl-textfield__label" for="cuenta11">Cuenta Debe</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--6-col">
+                                <div class="mdl-grid">
+                                    <div class="mdl-cell mdl-cell--12-col">
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <input class="mdl-textfield__input" type="text" id="cuenta11" />
+                                            <label class="mdl-textfield__label" for="cuenta11">Cantidad Debe</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--6-col">
+                                <div class="mdl-grid">
+                                    <div class="mdl-cell mdl-cell--12-col">
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <input class="mdl-textfield__input" type="text" id="cuenta11" />
+                                            <label class="mdl-textfield__label" for="cuenta11">Cuenta Haber</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--6-col">
+                                <div class="mdl-grid">
+                                    <div class="mdl-cell mdl-cell--12-col">
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <input class="mdl-textfield__input" type="text" id="cuenta11" />
+                                            <label class="mdl-textfield__label" for="cuenta11">Cantidad Haber</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--2-col"></div>
                 </div>
             </div>
-            <div class="mdl-cell mdl-cell--1-col">
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-                        <i class="material-icons">add</i>
-                </button></div>
-            <div class="mdl-cell mdl-cell--1-col">
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-                  <i class="material-icons">remove</i>
-                </button>
 
+
+
+            <div class="mdl-grid bgWhite">
+                <div class="mdl-cell mdl-cell--2-col"></div>
+                <div class="mdl-cell mdl-cell--6-col center">
+                    <h6>-1-</h6>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="fecha1" />
+                        <label class="mdl-textfield__label" for="fecha1">Fecha</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+                            <i class="material-icons">add</i>
+                    </button></div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+                      <i class="material-icons">remove</i>
+                    </button>
+
+                </div>
             </div>
-        </div>
-        <div class="mdl-grid containerDiario">
-            <div class="mdl-cell mdl-cell--2-col">
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-                    <i class="material-icons">add</i>
-                </button>
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-                    <i class="material-icons">remove</i>
-                </button>
-            </div>
-            <div class="mdl-cell mdl-cell--4-col">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--6-col">
-                        <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--12-col">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" id="cuenta11" />
-                                    <label class="mdl-textfield__label" for="cuenta11">Cuenta Debe</label>
+            <div class="mdl-grid containerDiario">
+                <div class="mdl-cell mdl-cell--2-col">
+                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+                        <i class="material-icons">add</i>
+                    </button>
+                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+                        <i class="material-icons">remove</i>
+                    </button>
+                </div>
+                <div class="mdl-cell mdl-cell--4-col">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--12-col">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="cuenta11" />
+                                        <label class="mdl-textfield__label" for="cuenta11">Cuenta Debe</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--6-col">
-                        <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--12-col">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" id="cuenta11" />
-                                    <label class="mdl-textfield__label" for="cuenta11">Cantidad Debe</label>
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--12-col">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="cuenta11" />
+                                        <label class="mdl-textfield__label" for="cuenta11">Cantidad Debe</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="mdl-cell mdl-cell--4-col">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--6-col">
-                        <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--12-col">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" id="cuenta11" />
-                                    <label class="mdl-textfield__label" for="cuenta11">Cuenta Haber</label>
+                <div class="mdl-cell mdl-cell--4-col">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--12-col">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="cuenta11" />
+                                        <label class="mdl-textfield__label" for="cuenta11">Cuenta Haber</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--6-col">
-                        <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--12-col">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" id="cuenta11" />
-                                    <label class="mdl-textfield__label" for="cuenta11">Cantidad Haber</label>
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--12-col">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="cuenta11" />
+                                        <label class="mdl-textfield__label" for="cuenta11">Cantidad Haber</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="mdl-cell mdl-cell--2-col">
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-                    <i class="material-icons">add</i>
-                </button>
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-                    <i class="material-icons">remove</i>
-                </button>
-            </div>
-        </div>
-        <div class="mdl-grid bgWhite">
-            <div class="mdl-cell mdl-cell--2-col"></div>
-            <div class="mdl-cell mdl-cell--5-col">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--6-col">
-                        <div class="mdl-grid"><div class="mdl-cell mdl-cell--12-col">TOTAL</div></div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--6-col">
-                        <div class="mdl-grid"><div class="mdl-cell mdl-cell--12-col">$2'000'000</div></div>
-                    </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+                        <i class="material-icons">add</i>
+                    </button>
+                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+                        <i class="material-icons">remove</i>
+                    </button>
                 </div>
             </div>
-            <div class="mdl-cell mdl-cell--5-col">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--6-col">
-                        <div class="mdl-grid"><div class="mdl-cell mdl-cell--12-col">TOTAL</div></div>
+
+
+            <div class="mdl-grid bgWhite">
+                <div class="mdl-cell mdl-cell--2-col"></div>
+                <div class="mdl-cell mdl-cell--5-col">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <div class="mdl-grid"><div class="mdl-cell mdl-cell--12-col">TOTAL</div></div>
+                        </div>
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <div class="mdl-grid"><div class="mdl-cell mdl-cell--12-col">$2'000'000</div></div>
+                        </div>
                     </div>
-                    <div class="mdl-cell mdl-cell--6-col">
-                        <div class="mdl-grid"><div class="mdl-cell mdl-cell--12-col">$2'000'000</div></div>
+                </div>
+                <div class="mdl-cell mdl-cell--5-col">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <div class="mdl-grid"><div class="mdl-cell mdl-cell--12-col">TOTAL</div></div>
+                        </div>
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <div class="mdl-grid"><div class="mdl-cell mdl-cell--12-col">$2'000'000</div></div>
+                        </div>
                     </div>
                 </div>
             </div>

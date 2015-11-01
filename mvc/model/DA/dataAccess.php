@@ -17,6 +17,8 @@
 		include('mvc/model/DA/companyDA.php');
 	}elseif(strpos($direct, "accountsDA") !== false){
 		include('mvc/model/DA/accountsDA.php');
+	}elseif(strpos($direct, "journalDA") !== false){
+		include('mvc/model/DA/journalDA.php');
 	}
 
 

@@ -1,0 +1,51 @@
+<div ng-app="mainApp" ng-controller="ctrlCuentasContables">
+    <div class="mdl-grid" ng-init="init();"></div>
+    <div class="mdl-grid"></div>
+    <div class="mdl-grid"></div>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--1-col"></div>
+        <div class="mdl-cell mdl-cell--10-col bgWhite">
+            <div class="mdl-grid title-main">
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--10-col center"><h3>Administraci&oacute;n de cuentas contables generales</h3></div>
+                <div class="mdl-cell mdl-cell--1-col"></div>
+            </div>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--2-col">ID CUENTA</div>
+                <div class="mdl-cell mdl-cell--2-col">DESCRIPCION</div>
+                <div class="mdl-cell mdl-cell--2-col">TIPO DE CUENTA</div>
+            </div>
+
+            <div class="mdl-grid" ng-repeat="cuenta in cuentas">
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--2-col">{{cuenta.ASS_ID}}</div>
+                <div class="mdl-cell mdl-cell--2-col">{{cuenta.ASS_DESC}}</div>
+                <div class="mdl-cell mdl-cell--2-col" ng-repeat='ta in typeAss' ng-if='ta.TAS_ID == cuenta.TAS_ID'>{{ta.TAS_DESC}}</div>
+            </div>
+
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--2-col"></div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="txtName" />
+                        <label class="mdl-textfield__label" for="txtName">Nombre cuenta</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <select class="mdl-textfield__input" type="text" id="txtTas">
+                            <option value='{{ta.TAS_ID}}' ng-repeat='ta in typeAss'>{{ta.TAS_DESC}}</option>
+                        </select>
+                        <label class="mdl-textfield__label" for="txtTas"></label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click='save();'>Agregar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
