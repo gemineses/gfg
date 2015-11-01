@@ -17,14 +17,22 @@
                 <div class="mdl-cell mdl-cell--3-col">{{lista[0]}}</div>
                 <div class="mdl-cell mdl-cell--3-col">{{lista[1]}}</div>
             </div>
-        </div>
-    </div>
-    <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--10-col"></div>
-        <div class="mdl-cell mdl-cell--2-col">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                <i class="material-icons">save</i>Guardar
-            </a>
+            <div class="mdl-grid containerAlt1">
+                <div class="mdl-cell mdl-cell--3-col">
+                    
+                </div>
+                <div class="mdl-cell mdl-cell--3-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="txtName" />
+                        <label class="mdl-textfield__label" for="txtName">Nombre</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--3-col">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click='save();'>
+                        <i class="material-icons">save</i>Agregar
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -5,7 +5,7 @@
                 <i class="material-icons">history</i>Regresar
             </a>
         </div>
-    	<div class="mdl-cell mdl-cell--10-col center"><h2>Empleados</h2></div>
+    	<div class="mdl-cell mdl-cell--10-col center"><h2>Personas</h2></div>
     </div>
     <div class="mdl-grid">
     	<div class="mdl-cell mdl-cell--12-col">
@@ -17,17 +17,68 @@
 			</div>
 			<div class="mdl-grid containerAlt1" ng-repeat="lista in employeeList">
 				<div class="mdl-cell mdl-cell--3-col">{{lista[0]}}</div>
-				<div class="mdl-cell mdl-cell--3-col">{{lista[2]}} {{lista[3]}}</div>
-				<div class="mdl-cell mdl-cell--3-col">{{lista[4]}} {{lista[5]}}</div>
-				<div class="mdl-cell mdl-cell--3-col">{{lista[6]}}</div>
+				<div class="mdl-cell mdl-cell--3-col">{{lista.PER_NAME}} {{lista.PER_MIDNAME}}</div>
+				<div class="mdl-cell mdl-cell--3-col">{{lista.PER_LAST_NAME}} {{lista.PER_S_LAST_NAME}}</div>
+				<div class="mdl-cell mdl-cell--3-col">{{lista.PER_B_DATE}}</div>
 			</div>
+            <div class="mdl-grid containerAlt1">
+                <div class="mdl-cell mdl-cell--3-col"></div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="txtName" />
+                        <label class="mdl-textfield__label" for="txtName">Nombre</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="txtName2" />
+                        <label class="mdl-textfield__label" for="txtName2">Segundo</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="txtApp" />
+                        <label class="mdl-textfield__label" for="txtApp">Paterno</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="txtApm" />
+                        <label class="mdl-textfield__label" for="txtApm">Materno</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <select class="mdl-textfield__input" type="text" id="txtDia">
+                            <option value='{{dia.id}}' ng-repeat='dia in dias'>{{dia.value}}</option>
+                        </select>
+                        <label class="mdl-textfield__label" for="txtDia">Dia</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <select class="mdl-textfield__input" type="text" id="txtMes">
+                            <option value='{{m.id}}' ng-repeat='m in mes'>{{m.value}}</option>
+                        </select>
+                        <label class="mdl-textfield__label" for="txtMes">Mes</label>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" maxlength="4" type="text" id="txtYear" />
+                        <label class="mdl-textfield__label" for="txtYear">A&ntilde;o</label>
+                    </div>
+                </div>
+            </div>
 		</div>
     </div>
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--10-col"></div>
         <div class="mdl-cell mdl-cell--2-col">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                <i class="material-icons">save</i>Guardar
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" ng-click='save();'>
+                <i class="material-icons">save</i>Agregar
             </a>
         </div>
     </div>
