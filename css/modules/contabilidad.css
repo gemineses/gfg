@@ -16,7 +16,10 @@
 	background-color: #deb1df;
 }
 
-.containerDiarioTotal{
+.containerDiarioTotalBien{
 	background-color: #DDE3EC;	
 }
 
+.containerDiarioTotalMal{
+	background-color: #f68e8e;	
+}

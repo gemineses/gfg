@@ -27,25 +27,87 @@
                 <div class="mdl-grid containerDiario" ng-repeat='sub in subJournal'>
                     <div class="mdl-cell mdl-cell--12-col">
                         <div class="mdl-grid containerDiario" ng-repeat='subMov in subJournalMov' ng-if='subMov.SJO_ID==sub.SJO_ID'>
-                            <div class="mdl-cell mdl-cell--3-col">
+                            <div class="mdl-cell mdl-cell--1-col">
+                                <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID && comA.TAS_ID==1'>
+                                    {{comA.CAS_OWN_ID}}</label>
+                            </div>
+                            <div class="mdl-cell mdl-cell--2-col">
                                 <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID && comA.TAS_ID==1'>
                                     {{comA.ASS_DESC}}</label>
                             </div>
                             <div class="mdl-cell mdl-cell--3-col">
                                 <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID  && comA.TAS_ID==1' ng-init='sumMov(sub.SJO_ID,1,subMov.AMMOUNT);'>{{subMov.AMMOUNT}}</label>
                             </div>
-                            <div class="mdl-cell mdl-cell--3-col">
+                            <div class="mdl-cell mdl-cell--1-col">
+                                <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID  && comA.TAS_ID!=1'>{{comA.CAS_OWN_ID}}</label>
+                            </div>
+                            <div class="mdl-cell mdl-cell--2-col">
                                 <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID  && comA.TAS_ID!=1'>{{comA.ASS_DESC}}</label>
                             </div>
                             <div class="mdl-cell mdl-cell--3-col">
                                 <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID  && comA.TAS_ID!=1' ng-init='sumMov(sub.SJO_ID,2,subMov.AMMOUNT);'>{{subMov.AMMOUNT}}</label>
                             </div>
                         </div>
-                        <div class="mdl-grid containerDiarioTotal">
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--1-col">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <select class="mdl-textfield__input" type="text" id="fecha1">
+                                        <option value='{{comA.CAS_ID}}' ng-repeat='comA in companyAssets'>{{comA.CAS_OWN_ID}}</option>
+                                    </select>
+                                    <label class="mdl-textfield__label" for="fecha1"></label>
+                                </div>   
+                            </div>
+                            <div class="mdl-cell mdl-cell--2-col">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="fecha1" />
+                                    <label class="mdl-textfield__label" for="fecha1"></label>
+                                </div>   
+                            </div>
+                            <div class="mdl-cell mdl-cell--2-col">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="fecha1" />
+                                    <label class="mdl-textfield__label" for="fecha1">Cantidad</label>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--1-col">
+                                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                    <i class="material-icons">save</i>
+                                </button>
+                            </div>
+                            <div class="mdl-cell mdl-cell--1-col">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <select class="mdl-textfield__input" type="text" id="fecha1">
+                                        <option value='{{comA.CAS_ID}}' ng-repeat='comA in companyAssets'>{{comA.CAS_OWN_ID}}</option>
+                                    </select>
+                                    <label class="mdl-textfield__label" for="fecha1"></label>
+                                </div>  
+                            </div>
+                            <div class="mdl-cell mdl-cell--2-col">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="fecha1" />
+                                    <label class="mdl-textfield__label" for="fecha1"></label>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--2-col">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="fecha1" />
+                                    <label class="mdl-textfield__label" for="fecha1">Cantidad</label>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--1-col">
+                                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                    <i class="material-icons">save</i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="mdl-grid containerDiarioTotalBien">
                             <div class="mdl-cell mdl-cell--3-col"></div>
-                            <div class="mdl-cell mdl-cell--3-col">Total:{{subJournalSum1[sub.SJO_ID]}}</div>
+                            <div class="mdl-cell mdl-cell--3-col" ng-if='subJournalSum1[sub.SJO_ID]==subJournalSum2[sub.SJO_ID]'>Total:{{subJournalSum1[sub.SJO_ID]}}</div>
+                            <div class="mdl-cell mdl-cell--3-col containerDiarioTotalMal" ng-if='subJournalSum1[sub.SJO_ID]!=subJournalSum2[sub.SJO_ID]'>Total:{{subJournalSum1[sub.SJO_ID]}}</div>
                             <div class="mdl-cell mdl-cell--3-col"></div>
-                            <div class="mdl-cell mdl-cell--3-col">Total:{{subJournalSum2[sub.SJO_ID]}}</div>
+                            <div class="mdl-cell mdl-cell--3-col" ng-if='subJournalSum1[sub.SJO_ID]==subJournalSum2[sub.SJO_ID]'>Total:{{subJournalSum2[sub.SJO_ID]}}</div>
+                            <div class="mdl-cell mdl-cell--3-col containerDiarioTotalMal" ng-if='subJournalSum1[sub.SJO_ID]!=subJournalSum2[sub.SJO_ID]'>Total:{{subJournalSum2[sub.SJO_ID]}}</div>
                         </div>
                     </div>
                 </div>
