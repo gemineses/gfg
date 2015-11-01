@@ -45,6 +45,16 @@
 		echo json_encode($arr);
 	}
 
+	function getSubJourMov(){
+		$sql= 'SELECT * FROM SUB_JOURNAL_MOV WHERE SJO_ID='.$_POST['subJournalId'];
+		$result = mysql_query($sql);
+		$arr = array();
+		while($row = mysql_fetch_array($result)){
+			array_push($arr, $row);
+		}
+		echo json_encode($arr);	
+	};
+
 	//entra a funciones
 	$uri = $_SERVER['REQUEST_URI'];
 	$direct = substr($uri, 8);
@@ -55,7 +65,11 @@
 		validateJournal($conn);
 	}elseif(strpos($direct, "getSubJournals") !== false){
 		getSubJournals($conn);
+	}elseif(strpos($direct, "getSubJourMov") !== false){
+		getSubJourMov($conn);
 	}
+
+
 
 	//finaliza conexion
 	$DBConfig->closeConn();
