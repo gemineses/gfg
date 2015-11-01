@@ -116,3 +116,71 @@ mainApp.controller('ctrlAccounts', function($scope){
 		});
 	};
 });
+
+
+
+
+mainApp.controller('ctrlCuentasContables', function($scope){
+	$scope.comp='';
+	$scope.init = function(){
+		$scope.getCuentas();
+		$scope.getTypeAsset();
+	};
+	$scope.cuentas = '';
+	$scope.getCuentas = function(){
+		$.ajax({
+			url: 'da/assetDA/getAll',
+			type: 'post',
+			success: function(json) {
+				$scope.$apply(function () {
+	            	$scope.cuentas = JSON.parse(json);
+	        	});
+			}
+		});
+	};
+
+	$scope.typeAss='';
+	$scope.getTypeAsset = function(){
+		$.ajax({
+			url: 'da/assetDA/getTypeAsset',
+			type: 'post',
+			success: function(json) {
+				$scope.$apply(function () {
+	            	$scope.typeAss = JSON.parse(json);
+	        	});
+			}
+		});
+	};	
+
+	$scope.save = function(){
+		var form = document.createElement('form');
+		var inputName = document.createElement('input');
+		var inputTas = document.createElement('input');
+
+		form.method = 'POST';
+		form.action = '';
+
+		inputName.value = document.getElementById('txtName').value;
+		inputName.name = 'txtName';
+		form.appendChild(inputName);
+
+		inputTas.value = document.getElementById('txtTas').value;
+		inputTas.name = 'txtTas';
+		form.appendChild(inputTas);
+
+
+		//TODO: hacer una validacion en caso de que llegue vacio
+		document.body.appendChild(form);
+
+		var str = $( "form" ).serialize();
+
+		$.ajax({
+			url: 'da/assetDA/setAsset',
+			data: str,
+			type: 'post',
+			success: function(json) {
+				location.reload();
+			}
+		});
+	};
+});

@@ -52,7 +52,7 @@ mainApp.controller('ctrlContabilidad', function($scope){
 			success: function(json) {
 				$scope.$apply(function () {
 	            	$scope.subJournal[$scope.subJournalCont] = JSON.parse(json)[0];
-	            	$scope.subJournalCont+=1*;
+	            	$scope.subJournalCont+=1;
 	        	});
 			}
 		});
