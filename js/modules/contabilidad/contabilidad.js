@@ -14,6 +14,18 @@ mainApp.controller('ctrlContabilidad', function($scope){
 		});
 	};
 	
+	$scope.companyAssets = '';
+	$scope.getCompanyAssets = function(){
+		$.ajax({
+			url: 'da/assetDA/getCompanyAssetsForAccouting',
+			type: 'post',
+			success: function(json) {
+				$scope.$apply(function () {
+	            	$scope.companyAssets = JSON.parse(json);
+	        	});
+			}
+		});
+	};
 	$scope.generalJournalId=0;
 	$scope.valGeneralJournal = function(){
 		$.ajax({
@@ -52,8 +64,25 @@ mainApp.controller('ctrlContabilidad', function($scope){
 			success: function(json) {
 				$scope.$apply(function () {
 	            	$scope.subJournal[$scope.subJournalCont] = JSON.parse(json)[0];
+	            	$scope.getSubJourMov($scope.subJournal[$scope.subJournalCont].SJO_ID);
 	            	$scope.subJournalCont+=1;
 	        	});
+			}
+		});
+	};
+	$scope.subJournalMov = [];
+	$scope.subJournalMovCont = 0;
+	$scope.getSubJourMov = function(subJournalId){
+		data = 'subJournalId='+subJournalId;
+		$.ajax({
+			url: 'da/journalDA/getSubJourMov',
+			data: data,
+			type: 'post',
+			success: function(json) {
+				$scope.$apply(function () {
+					$scope.subJournalMov[$scope.subJournalMovCont] = JSON.parse(json)[0];
+					$scope.subJournalMovCont += 1;
+				});
 			}
 		});
 	};
@@ -61,7 +90,33 @@ mainApp.controller('ctrlContabilidad', function($scope){
 	$scope.init = function(){
 		$scope.getCompany();
 		$scope.valGeneralJournal();
+		$scope.getCompanyAssets();
 	};
+
+	$scope.subJournalSum1=[];
+	$scope.subJournalSum2=[];
+	$scope.sumMov = function(index, side, ammount){
+		if(side==1){
+			if($scope.subJournalSum1[index]==undefined){
+				$scope.subJournalSum1[index]=ammount;
+			}else{
+				$scope.subJournalSum1[index]+=ammount;
+			}
+			
+		}else if(side==2){
+			if($scope.subJournalSum2[index]==undefined){
+				$scope.subJournalSum2[index]=ammount;
+			}else{
+				$scope.subJournalSum2[index]+=ammount;	
+			}
+		}
+		setTimeout(function(){
+			$scope.$apply(function () {
+				$scope.subJournalSum1[index]=$scope.subJournalSum1[index];
+				$scope.subJournalSum2[index]=$scope.subJournalSum2[index];
+			});
+		}, 3000);
+	}
 	/*$scope.save = function(){
 		var form = document.createElement('form');
 		var inputName = document.createElement('input');

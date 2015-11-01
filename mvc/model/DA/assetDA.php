@@ -43,6 +43,18 @@
 		echo json_encode($arr);
 	}
 
+	function getCompanyAssetsForAccouting(){
+		$sql = 'SELECT CAS_ID, CAS_OWN_ID, ASS_DESC, TAS_ID FROM COMPANY_ASSETS NATURAL JOIN ASSET NATURAL JOIN TYPE_ASSET WHERE COM_ID='.$_SESSION['compId'];
+		$result = mysql_query($sql);
+		$arr = array();
+		while($row = mysql_fetch_array($result)){
+			array_push($arr, $row);
+		}
+		echo json_encode($arr);
+	}
+
+
+
 	function setCompanyAsset(){
 		$sql = 'INSERT INTO COMPANY_ASSETS VALUES (0, '.$_SESSION['compId'].', '.$_POST['txtCuenta'].', "'.$_POST['txtIdPropio'].'")';
 		$result = mysql_query($sql);	
@@ -62,7 +74,10 @@
 		getAllCompany($conn);
 	}elseif(strpos($direct, "setCompanyAsset") !== false){
 		setCompanyAsset($conn);
+	}elseif(strpos($direct, "getCompanyAssetsForAccouting") !== false){
+		getCompanyAssetsForAccouting($conn);
 	}
+
 
 
 

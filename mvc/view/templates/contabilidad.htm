@@ -25,61 +25,33 @@
                     </div>
                 </div>
                 <div class="mdl-grid containerDiario" ng-repeat='sub in subJournal'>
-                    {{subJournal}}
-                    <div class="mdl-cell mdl-cell--2-col"></div>
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--6-col">
-                                <div class="mdl-grid">
-                                    <div class="mdl-cell mdl-cell--12-col">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                            <input class="mdl-textfield__input" type="text" id="cuenta11" />
-                                            <label class="mdl-textfield__label" for="cuenta11">Cuenta Debe</label>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="mdl-grid containerDiario" ng-repeat='subMov in subJournalMov' ng-if='subMov.SJO_ID==sub.SJO_ID'>
+                            <div class="mdl-cell mdl-cell--3-col">
+                                <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID && comA.TAS_ID==1'>
+                                    {{comA.ASS_DESC}}</label>
                             </div>
-                            <div class="mdl-cell mdl-cell--6-col">
-                                <div class="mdl-grid">
-                                    <div class="mdl-cell mdl-cell--12-col">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                            <input class="mdl-textfield__input" type="text" id="cuenta11" />
-                                            <label class="mdl-textfield__label" for="cuenta11">Cantidad Debe</label>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="mdl-cell mdl-cell--3-col">
+                                <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID  && comA.TAS_ID==1' ng-init='sumMov(sub.SJO_ID,1,subMov.AMMOUNT);'>{{subMov.AMMOUNT}}</label>
+                            </div>
+                            <div class="mdl-cell mdl-cell--3-col">
+                                <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID  && comA.TAS_ID!=1'>{{comA.ASS_DESC}}</label>
+                            </div>
+                            <div class="mdl-cell mdl-cell--3-col">
+                                <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID  && comA.TAS_ID!=1' ng-init='sumMov(sub.SJO_ID,2,subMov.AMMOUNT);'>{{subMov.AMMOUNT}}</label>
                             </div>
                         </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--6-col">
-                                <div class="mdl-grid">
-                                    <div class="mdl-cell mdl-cell--12-col">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                            <input class="mdl-textfield__input" type="text" id="cuenta11" />
-                                            <label class="mdl-textfield__label" for="cuenta11">Cuenta Haber</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mdl-cell mdl-cell--6-col">
-                                <div class="mdl-grid">
-                                    <div class="mdl-cell mdl-cell--12-col">
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                            <input class="mdl-textfield__input" type="text" id="cuenta11" />
-                                            <label class="mdl-textfield__label" for="cuenta11">Cantidad Haber</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="mdl-grid containerDiarioTotal">
+                            <div class="mdl-cell mdl-cell--3-col"></div>
+                            <div class="mdl-cell mdl-cell--3-col">Total:{{subJournalSum1[sub.SJO_ID]}}</div>
+                            <div class="mdl-cell mdl-cell--3-col"></div>
+                            <div class="mdl-cell mdl-cell--3-col">Total:{{subJournalSum2[sub.SJO_ID]}}</div>
                         </div>
                     </div>
-                    <div class="mdl-cell mdl-cell--2-col"></div>
                 </div>
             </div>
 
-
+            
 
             <div class="mdl-grid bgWhite">
                 <div class="mdl-cell mdl-cell--2-col"></div>
