@@ -80,8 +80,10 @@ mainApp.controller('ctrlContabilidad', function($scope){
 			type: 'post',
 			success: function(json) {
 				$scope.$apply(function () {
-					$scope.subJournalMov[$scope.subJournalMovCont] = JSON.parse(json)[0];
-					$scope.subJournalMovCont += 1;
+					for(x in JSON.parse(json)){
+						$scope.subJournalMov[$scope.subJournalMovCont] = JSON.parse(json)[x];
+						$scope.subJournalMovCont += 1;
+					}
 				});
 			}
 		});
@@ -98,16 +100,16 @@ mainApp.controller('ctrlContabilidad', function($scope){
 	$scope.sumMov = function(index, side, ammount){
 		if(side==1){
 			if($scope.subJournalSum1[index]==undefined){
-				$scope.subJournalSum1[index]=ammount;
+				$scope.subJournalSum1[index]=parseInt(ammount);
 			}else{
-				$scope.subJournalSum1[index]+=ammount;
+				$scope.subJournalSum1[index]+=parseInt(ammount);
 			}
 			
 		}else if(side==2){
 			if($scope.subJournalSum2[index]==undefined){
-				$scope.subJournalSum2[index]=ammount;
+				$scope.subJournalSum2[index]=parseInt(ammount);
 			}else{
-				$scope.subJournalSum2[index]+=ammount;	
+				$scope.subJournalSum2[index]+=parseInt(ammount);
 			}
 		}
 		setTimeout(function(){
@@ -117,6 +119,60 @@ mainApp.controller('ctrlContabilidad', function($scope){
 			});
 		}, 3000);
 	}
+
+	$scope.totalMovimiento=0;
+	$scope.sumaMovimiento = function(index, side, cantidad){
+		console.log(index);
+		console.log($scope.subJournalSum1[index]);
+	};
+
+
+	$scope.getTotal = function(cantidad){
+		return cantidad;
+	};
+
+	$scope.insertAmmountDebe=0;
+	$scope.insertAmmountHaber=0;
+	$scope.parseFloat = parseFloat;
+
+	$scope.saveSubJournal = function(subJournal, compAsset, ammount){
+		var form = document.createElement('form');
+		var inputSubJournal = document.createElement('input');
+		var inputAsset = document.createElement('input');
+		var inputAmmount = document.createElement('input');
+		
+
+		form.method = 'POST';
+		form.action = '';
+
+		inputSubJournal.value = subJournal.SJO_ID;
+		inputSubJournal.name = 'subJournalMov';
+		form.appendChild(inputSubJournal);
+
+
+		inputAsset.value = compAsset.CAS_ID;
+		inputAsset.name = 'compAsset';
+		form.appendChild(inputAsset);
+
+
+		inputAmmount.value = ammount;
+		inputAmmount.name = 'ammount';
+		form.appendChild(inputAmmount);
+		
+		//TODO: hacer una validacion en caso de que llegue vacio
+		document.body.appendChild(form);
+
+		var str = $( "form" ).serialize();
+
+		$.ajax({
+			url: 'da/journalDA/newSubJournal',
+			data: str,
+			type: 'post',
+			success: function() {
+				location.reload();
+			}
+		});
+	};
 	/*$scope.save = function(){
 		var form = document.createElement('form');
 		var inputName = document.createElement('input');

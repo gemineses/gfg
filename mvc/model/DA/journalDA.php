@@ -55,6 +55,12 @@
 		echo json_encode($arr);	
 	};
 
+	function newSubJournal(){
+		$sql= 'INSERT INTO SUB_JOURNAL_MOV VALUES(0, '.$_POST['compAsset'].', '.$_POST['subJournalMov'].', '.$_POST['ammount'].')';
+		mysql_query($sql);
+	};
+	
+
 	//entra a funciones
 	$uri = $_SERVER['REQUEST_URI'];
 	$direct = substr($uri, 8);
@@ -67,6 +73,8 @@
 		getSubJournals($conn);
 	}elseif(strpos($direct, "getSubJourMov") !== false){
 		getSubJourMov($conn);
+	}elseif(strpos($direct, "newSubJournal") !== false){
+		newSubJournal($conn);
 	}
 
 
