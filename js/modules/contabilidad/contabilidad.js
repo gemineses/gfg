@@ -48,7 +48,9 @@ mainApp.controller('ctrlContabilidad', function($scope){
 				$scope.$apply(function () {
 	            	$scope.dataJournal = JSON.parse(json);
 	        	});
-	        	$scope.getJournals(JSON.parse(json)[0].JO_ID);
+	        	for(x in JSON.parse(json)){
+	        		$scope.getJournals(JSON.parse(json)[x].JO_ID);
+	        	}
 			}
 		});	
 	};
@@ -63,9 +65,11 @@ mainApp.controller('ctrlContabilidad', function($scope){
 			type: 'post',
 			success: function(json) {
 				$scope.$apply(function () {
-	            	$scope.subJournal[$scope.subJournalCont] = JSON.parse(json)[0];
-	            	$scope.getSubJourMov($scope.subJournal[$scope.subJournalCont].SJO_ID);
-	            	$scope.subJournalCont+=1;
+					for(x in JSON.parse(json)){
+						$scope.subJournal[$scope.subJournalCont] = JSON.parse(json)[x];
+	            		$scope.getSubJourMov($scope.subJournal[$scope.subJournalCont].SJO_ID);
+	            		$scope.subJournalCont+=1;
+					}
 	        	});
 			}
 		});
@@ -131,6 +135,35 @@ mainApp.controller('ctrlContabilidad', function($scope){
 		return cantidad;
 	};
 
+	$scope.getTotalGeneral = function(tipo){
+		if(tipo=='debe'){
+			var doc = document.getElementsByName('totalDebe[]');
+			var cont=0;
+			for(d in doc){
+				try{
+					if(doc[d].getAttribute('val')!='NaN'){
+						cont += parseInt(doc[d].getAttribute('val'));
+					}
+				}catch(e){
+
+				}
+			}
+			return cont;
+		}else if(tipo=='haber'){
+			var doc = document.getElementsByName('totalHaber[]');
+			var cont=0;
+			for(d in doc){
+				try{
+					if(doc[d].getAttribute('val')!='NaN'){
+						cont += parseInt(doc[d].getAttribute('val'));
+					}
+				}catch(e){
+
+				}
+			}
+			return cont;
+		}
+	};
 	$scope.insertAmmountDebe=0;
 	$scope.insertAmmountHaber=0;
 	$scope.parseFloat = parseFloat;
@@ -165,10 +198,46 @@ mainApp.controller('ctrlContabilidad', function($scope){
 		var str = $( "form" ).serialize();
 
 		$.ajax({
-			url: 'da/journalDA/newSubJournal',
+			url: 'da/journalDA/newSubJournalMov',
 			data: str,
 			type: 'post',
 			success: function() {
+				location.reload();
+			}
+		});
+	};
+
+	$scope.addJournal = function(journal){
+		var jo=0;
+		if(journal.length!=0){
+			jo=journal.length-1
+		}
+
+		var form = document.createElement('form');
+		var generalJournal = document.createElement('input');
+		var order = document.createElement('input');
+		
+		form.method = 'POST';
+		form.action = '';
+
+		generalJournal.value = journal[jo].GJO_ID;
+		generalJournal.name = 'generalJournalId';
+		form.appendChild(generalJournal);
+
+		order.value = parseInt(journal[jo].JO_ORDER)+1;
+		order.name = 'order';
+		form.appendChild(order);
+		
+		//TODO: hacer una validacion en caso de que llegue vacio
+		document.body.appendChild(form);
+
+		var str = $( "form" ).serialize();
+
+		$.ajax({
+			url: 'da/journalDA/newJournal',
+			data: str,
+			type: 'post',
+			success: function(algo) {
 				location.reload();
 			}
 		});

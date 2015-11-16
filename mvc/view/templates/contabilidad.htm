@@ -14,7 +14,7 @@
                 <div class="mdl-cell mdl-cell--7-col"><h5>Libro diario desde {{generalJournalId[0].GJO_DATE_INIT}}</h5></div>
                 <div class="mdl-cell mdl-cell--1-col"></div>
             </div>
-            <div ng-repeat='j in dataJournal'>
+            <div ng-repeat='j in dataJournal' ng-init='jIndex = $index'>
                 <div class="mdl-grid bgWhite">
                     <div class="mdl-cell mdl-cell--2-col"></div>
                     <div class="mdl-cell mdl-cell--6-col center">
@@ -24,9 +24,9 @@
                         <h6>{{j.JO_DATE_INIT}}</h6>
                     </div>
                 </div>
-                <div class="mdl-grid containerDiario" ng-repeat='sub in subJournal'>
+                <div class="mdl-grid containerDiario" >
                     <div class="mdl-cell mdl-cell--12-col">
-                        <div class="mdl-grid containerDiario" ng-repeat='subMov in subJournalMov' ng-if='subMov.SJO_ID==sub.SJO_ID' ng-init='totalMovimiento=0'>
+                        <div class="mdl-grid containerDiario" ng-repeat='subMov in subJournalMov' ng-if='subMov.SJO_ID==subJournal[jIndex].SJO_ID' ng-init='totalMovimiento=0'>
                             <div class="mdl-cell mdl-cell--1-col">
                                 <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID && comA.TAS_ID==1'>
                                     {{comA.CAS_OWN_ID}}</label>
@@ -36,7 +36,7 @@
                                     {{comA.ASS_DESC}}</label>
                             </div>
                             <div class="mdl-cell mdl-cell--3-col">
-                                <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID  && comA.TAS_ID==1' ng-init='sumMov(sub.SJO_ID,1,subMov.AMMOUNT);' name='movientoDebe[]' value='{{subMov.AMMOUNT[$index]}}'>{{subMov.AMMOUNT}}</label>
+                                <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID  && comA.TAS_ID==1' ng-init='sumMov(subJournal[jIndex].SJO_ID,1,subMov.AMMOUNT);' name='movientoDebe[]' value='{{subMov.AMMOUNT[$index]}}'>{{subMov.AMMOUNT}}</label>
                             </div>
                             <div class="mdl-cell mdl-cell--1-col">
                                 <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID  && comA.TAS_ID!=1'>{{comA.CAS_OWN_ID}}</label>
@@ -45,7 +45,7 @@
                                 <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID  && comA.TAS_ID!=1'>{{comA.ASS_DESC}}</label>
                             </div>
                             <div class="mdl-cell mdl-cell--3-col">
-                                <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID  && comA.TAS_ID!=1' ng-init='sumMov(sub.SJO_ID,2,subMov.AMMOUNT);' name='movientoHaber[]' value='{{subMov.AMMOUNT[$index]}}'>{{subMov.AMMOUNT}}</label>
+                                <label ng-repeat='comA in companyAssets' ng-if='comA.CAS_ID==subMov.CAS_ID  && comA.TAS_ID!=1' ng-init='sumMov(subJournal[jIndex].SJO_ID,2,subMov.AMMOUNT);' name='movientoHaber[]' value='{{subMov.AMMOUNT[$index]}}'>{{subMov.AMMOUNT}}</label>
                             </div>
                         </div>
                         <div class="mdl-grid">
@@ -70,7 +70,7 @@
                                     </div>
                             </div>
                             <div class="mdl-cell mdl-cell--1-col">
-                                <button ng-click='saveSubJournal(sub, comASelect1, insertAmmountDebe);' class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                <button ng-click='saveSubJournal(subJournal[jIndex], comASelect1, insertAmmountDebe);' class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                     <i class="material-icons">save</i>
                                 </button>
                             </div>
@@ -95,18 +95,18 @@
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--1-col">
-                                <button ng-click='saveSubJournal(sub, comASelect2, insertAmmountHaber);' class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                <button ng-click='saveSubJournal(subJournal[jIndex], comASelect2, insertAmmountHaber);' class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                     <i class="material-icons">save</i>
                                 </button>
                             </div>
                         </div>
                         <div class="mdl-grid containerDiarioTotalBien">
                             <div class="mdl-cell mdl-cell--3-col"></div>
-                            <div class="mdl-cell mdl-cell--3-col" ng-if='subJournalSum1[sub.SJO_ID]==subJournalSum2[sub.SJO_ID]'>Total:{{parseFloat(subJournalSum1[sub.SJO_ID])+parseFloat(insertAmmountDebe)}}</div>
-                            <div class="mdl-cell mdl-cell--3-col containerDiarioTotalMal" ng-if='subJournalSum1[sub.SJO_ID]!=subJournalSum2[sub.SJO_ID]'>Total:{{parseFloat(subJournalSum1[sub.SJO_ID])+parseFloat(insertAmmountDebe)}}</div>
+                            <div class="mdl-cell mdl-cell--3-col" ng-if='subJournalSum1[subJournal[jIndex].SJO_ID]==subJournalSum2[subJournal[jIndex].SJO_ID]' name='totalDebe[]' val='{{parseFloat(subJournalSum1[subJournal[jIndex].SJO_ID])+parseFloat(insertAmmountDebe)}}'>Total:{{parseFloat(subJournalSum1[subJournal[jIndex].SJO_ID])+parseFloat(insertAmmountDebe)}}</div>
+                            <div class="mdl-cell mdl-cell--3-col containerDiarioTotalMal" ng-if='subJournalSum1[subJournal[jIndex].SJO_ID]!=subJournalSum2[subJournal[jIndex].SJO_ID]' name='totalDebe[]'  val='{{parseFloat(subJournalSum1[subJournal[jIndex].SJO_ID])+parseFloat(insertAmmountDebe)}}'>Total:{{parseFloat(subJournalSum1[subJournal[jIndex].SJO_ID])+parseFloat(insertAmmountDebe)}}</div>
                             <div class="mdl-cell mdl-cell--3-col"></div>
-                            <div class="mdl-cell mdl-cell--3-col" ng-if='subJournalSum1[sub.SJO_ID]==subJournalSum2[sub.SJO_ID]'>Total:{{parseFloat(subJournalSum2[sub.SJO_ID])+parseFloat(insertAmmountHaber)}}</div>
-                            <div class="mdl-cell mdl-cell--3-col containerDiarioTotalMal" ng-if='subJournalSum1[sub.SJO_ID]!=subJournalSum2[sub.SJO_ID]'>Total:{{parseFloat(subJournalSum2[sub.SJO_ID])+parseFloat(insertAmmountHaber)}}</div>
+                            <div class="mdl-cell mdl-cell--3-col" ng-if='subJournalSum1[subJournal[jIndex].SJO_ID]==subJournalSum2[subJournal[jIndex].SJO_ID]' name='totalHaber[]'  val='{{parseFloat(subJournalSum2[subJournal[jIndex].SJO_ID])+parseFloat(insertAmmountHaber)}}'>Total:{{parseFloat(subJournalSum2[subJournal[jIndex].SJO_ID])+parseFloat(insertAmmountHaber)}}</div>
+                            <div class="mdl-cell mdl-cell--3-col containerDiarioTotalMal" ng-if='subJournalSum1[subJournal[jIndex].SJO_ID]!=subJournalSum2[subJournal[jIndex].SJO_ID]' name='totalHaber[]'  val='{{parseFloat(subJournalSum2[subJournal[jIndex].SJO_ID])+parseFloat(insertAmmountHaber)}}'>Total:{{parseFloat(subJournalSum2[subJournal[jIndex].SJO_ID])+parseFloat(insertAmmountHaber)}}</div>
                         </div>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                     </div>-->
                 </div>
                 <div class="mdl-cell mdl-cell--1-col">
-                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+                    <button ng-click='addJournal(dataJournal);' class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
                             <i class="material-icons">add</i>
                     </button></div>
                 <div class="mdl-cell mdl-cell--1-col">
@@ -208,7 +208,7 @@
                             <div class="mdl-grid"><div class="mdl-cell mdl-cell--12-col">TOTAL</div></div>
                         </div>
                         <div class="mdl-cell mdl-cell--6-col">
-                            <div class="mdl-grid"><div class="mdl-cell mdl-cell--12-col">$2'000'000</div></div>
+                            <div class="mdl-grid"><div class="mdl-cell mdl-cell--12-col">{{getTotalGeneral('debe');}}</div></div>
                         </div>
                     </div>
                 </div>
@@ -218,7 +218,7 @@
                             <div class="mdl-grid"><div class="mdl-cell mdl-cell--12-col">TOTAL</div></div>
                         </div>
                         <div class="mdl-cell mdl-cell--6-col">
-                            <div class="mdl-grid"><div class="mdl-cell mdl-cell--12-col">$2'000'000</div></div>
+                            <div class="mdl-grid"><div class="mdl-cell mdl-cell--12-col">{{getTotalGeneral('haber');}}</div></div>
                         </div>
                     </div>
                 </div>

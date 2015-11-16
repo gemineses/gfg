@@ -24,10 +24,13 @@
 	function validateJournal(){
 		$sql = 'SELECT * FROM JOURNAL WHERE GJO_ID='.$_POST['gjoId'].' ORDER BY JO_ORDER';
 		$result = mysql_query($sql);
+		$arr = array();
 		if($row = mysql_fetch_array($result)){
-			$arr = array();	
 			array_push($arr, $row);
-			echo json_encode($arr);
+			while($row = mysql_fetch_array($result)){
+				array_push($arr, $row);
+			}
+			echo json_encode($arr);	
 		}else{
 			$sql = 'INSERT INTO JOURNAL VALUES( 0, NOW(), 0, '.$_POST['gjoId'].')';
 			$result = mysql_query($sql);
@@ -55,11 +58,27 @@
 		echo json_encode($arr);	
 	};
 
-	function newSubJournal(){
+	function newSubJournalMov(){
 		$sql= 'INSERT INTO SUB_JOURNAL_MOV VALUES(0, '.$_POST['compAsset'].', '.$_POST['subJournalMov'].', '.$_POST['ammount'].')';
 		mysql_query($sql);
 	};
+
+	function newJournal(){
+		$sql= 'INSERT INTO JOURNAL VALUES(0, NOW(), '.$_POST['order'].', '.$_POST['generalJournalId'].')';
+		mysql_query($sql);
+		newSubJournal();
+	};
 	
+	function newSubJournal(){
+		$sql= 'SELECT JO_ID FROM JOURNAL WHERE GJO_ID='.$_POST['generalJournalId'].' AND JO_ORDER='.$_POST['order'];
+		$result = mysql_query($sql);
+		$joId=0;
+		while($row = mysql_fetch_array($result)){
+			$joId = $row[0];
+		}
+		$sql = 'INSERT INTO SUB_JOURNAL VALUES(0, 0, "DESC", '.$joId.')';
+		mysql_query($sql);
+	}
 
 	//entra a funciones
 	$uri = $_SERVER['REQUEST_URI'];
@@ -73,8 +92,10 @@
 		getSubJournals($conn);
 	}elseif(strpos($direct, "getSubJourMov") !== false){
 		getSubJourMov($conn);
-	}elseif(strpos($direct, "newSubJournal") !== false){
-		newSubJournal($conn);
+	}elseif(strpos($direct, "newSubJournalMov") !== false){
+		newSubJournalMov($conn);
+	}elseif(strpos($direct, "newJournal") !== false){
+		newJournal($conn);
 	}
 
 
