@@ -328,3 +328,44 @@ conceptApp.controller('ctrlCatalogoCuentas', function($scope){
 
 	};
 });
+
+
+conceptApp.controller('crtlConceptos', function($scope){
+	$scope.conceptList = '';
+	$scope.consultaCatalogo = function(){
+		$.ajax({
+			url: 'da/conceptDA/getAll',
+			type: 'post',
+			success: function(json) {
+				$scope.$apply(function () {
+	            	$scope.conceptList = jQuery.parseJSON(json);
+	        	});
+			}
+		});
+	};
+	$scope.saveConcept = function(){
+		var form = document.createElement('form');
+		var inputDesc = document.createElement('input');
+		
+		form.method = 'POST';
+		form.action = '';
+
+		inputDesc.value = document.getElementById('txtDesc').value;
+		inputDesc.name = 'conceptDesc';
+		form.appendChild(inputDesc);
+
+		//TODO: hacer una validacion en caso de que llegue vacio
+		document.body.appendChild(form);
+
+		var str = $( "form" ).serialize();
+
+		$.ajax({
+			url: 'da/conceptDA/addNew',
+			data: str,
+			type: 'post',
+			success: function() {
+				location.reload();
+			}
+		});
+	};
+});

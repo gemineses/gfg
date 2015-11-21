@@ -1,5 +1,5 @@
-<div class="mdl-cell mdl-cell--12-col containerBigCard mdl-shadow--2dp">
-    <div class="mdl-grid bgConceptos">
+<div class="mdl-cell mdl-cell--12-col containerBigCard mdl-shadow--2dp" ng-app="conceptApp" ng-controller="crtlConceptos">
+    <div class="mdl-grid bgConceptos" ng-init='consultaCatalogo();'>
     	<div class="mld-cell mdl-cell-2-col">
     		<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="catalogo">
                 <i class="material-icons">history</i>Regresar
@@ -7,35 +7,36 @@
         </div>
     	<div class="mdl-cell mdl-cell--10-col center"><h2>Conceptos</h2></div>
     </div>
-    <div class="mdl-grid">IMG</div>
+    <div class="mdl-grid"></div>
     <div class="mdl-grid">
     	<div class="mdl-cell mdl-cell--12-col">
 			<div class="mdl-grid containerAlt0">
-				<div class="mdl-cell mdl-cell--3-col" onClick="getCatalogoCuentas();">CUENTA ID</div>
-				<div class="mdl-cell mdl-cell--3-col">ID PROPIO</div>
-				<div class="mdl-cell mdl-cell--3-col">NOMBRE</div>
-				<div class="mdl-cell mdl-cell--3-col">TIPO DE CUENTA</div>
+				<div class="mdl-cell mdl-cell--3-col">ID</div>
+				<div class="mdl-cell mdl-cell--3-col">DESCRIPCION</div>
 			</div>
-			<div class="mdl-grid containerAlt1">
-				<div class="mdl-cell mdl-cell--3-col">0</div>
-				<div class="mdl-cell mdl-cell--3-col">000-000-000</div>
-				<div class="mdl-cell mdl-cell--3-col">PRUEBA</div>
-				<div class="mdl-cell mdl-cell--3-col">ACTIVO</div>
+			<div class="mdl-grid containerAlt1" ng-repeat='list in conceptList'>
+				<div class="mdl-cell mdl-cell--3-col">{{list.CPT_ID}}</div>
+				<div class="mdl-cell mdl-cell--3-col">{{list.CPT_DESC}}</div>
 			</div>
 			<div class="mdl-grid containerAlt2">
-				<div class="mdl-cell mdl-cell--3-col">0</div>
-				<div class="mdl-cell mdl-cell--3-col">000-000-000</div>
-				<div class="mdl-cell mdl-cell--3-col">PRUEBA</div>
-				<div class="mdl-cell mdl-cell--3-col">ACTIVO</div>
+				<div class="mdl-cell mdl-cell--3-col">
+                </div>
+				<div class="mdl-cell mdl-cell--3-col">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" id="txtDesc">
+						<label class="mdl-textfield__label" for="txtDesc">Descripci&oacute;n</label>
+					</div>
+				</div>
+				<div class="mdl-cell mdl-cell--2-col">
+					<button ng-click='saveConcept();' class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+						<i class="material-icons">save</i>Guardar
+					</button>
+				</div>
 			</div>
 		</div>
     </div>
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--10-col"></div>
-        <div class="mdl-cell mdl-cell--2-col">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                <i class="material-icons">save</i>Guardar
-            </a>
-        </div>
+       
     </div>
 </div>

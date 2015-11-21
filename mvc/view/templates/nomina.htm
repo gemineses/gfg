@@ -1,0 +1,71 @@
+<div ng-app="mainApp" ng-controller="ctrlNomina">
+	<div class="mdl-grid"></div>
+	<div class="mdl-grid"></div>
+	<div class="mdl-grid"></div>
+	<div class="mdl-grid">
+		<style>
+		.demo-card-wide.mdl-card {
+		width: 512px;
+		}
+		.demo-card-wide > .mdl-card__title {
+		color: #000;
+		height: 176px;
+		background: url('img/pic/pay.jpg') center / cover;
+		}
+		.demo-card-wide > .mdl-card__menu {
+		color: #fff;
+		}
+		</style>
+		<div class="mdl-cell mdl-cell--4-col"></div>
+		<div class="mdl-cell mdl-cell--4-col">
+			<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+				<div class="mdl-card__title">
+					<h2 class="mdl-card__title-text">Nomina</h2>
+				</div>
+				<div class="mdl-card__supporting-text">
+					<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-cell--4-col" ng-click='addTemplate(0);'>
+					  PUESTOS
+					</button>
+					<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-cell--4-col" ng-click='addTemplate(1);'>
+					  IMPUESTOS
+					</button>
+				</div>
+				<div class="mdl-card__actions mdl-card--border" id='containerNomina'>
+				</div>
+				<div class="mdl-card__menu">
+					<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+						<i class="material-icons">share</i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+
+
+	<!--aqui inician las vistas-->
+	<div style='display:none;'>
+		<div id='puestoDiv'>
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--3-col">Departamento</div>
+				<div class="mdl-cell mdl-cell--3-col">Puesto</div>
+				<div class="mdl-cell mdl-cell--3-col">Turno</div>
+				<div class="mdl-cell mdl-cell--3-col">Empleado</div>
+			</div>
+		</div>
+		<div id='impuestoDiv'>
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--3-col">Empleado</div>
+				<div class="mdl-cell mdl-cell--3-col">Puesto</div>
+				<div class="mdl-cell mdl-cell--3-col">Concepto</div>
+				<div class="mdl-cell mdl-cell--3-col">Cantidad</div>
+			</div>
+		</div>
+	</div>
+	<!--aqui fin las vistas-->
+
+</div>
+
+
+
