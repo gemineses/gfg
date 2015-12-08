@@ -17,6 +17,18 @@
 		}
 		echo json_encode($arr);
 	}
+
+	function getPerson($conn){
+		/*reading databases funtions*/
+		$sql = 'SELECT * FROM VW_EMPLOYEE_PERSON';
+		$result = mysql_query($sql);
+		$arr = array();
+		while($row = mysql_fetch_array($result)){
+			array_push($arr, $row);
+		}
+		echo json_encode($arr);
+	}
+
 	function setNew($conn){
 		/*reading databases funtions*/
 		$sql = 'INSERT INTO PERSON VALUES (0, "'.$_POST['txtName'].'", "'.$_POST['txtName2'].'", "'.$_POST['txtApp'].'", "'.$_POST['txtApm'].'", "'.$_POST['txtYear'].'-'.$_POST['txtMes'].'-'.$_POST['txtDia'].'")';
@@ -31,6 +43,8 @@
 		getAll($conn);
 	}elseif(strpos($direct, "setNew") !== false){
 		setNew($conn);
+	}elseif(strpos($direct, "getPerson") !== false){
+		getPerson($conn);
 	}
 
 	//finaliza conexion

@@ -23,7 +23,7 @@
 					<h2 class="mdl-card__title-text">Nomina</h2>
 				</div>
 				<div class="mdl-card__supporting-text">
-					<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-cell--4-col" ng-click='addTemplate(0);'>
+					<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-cell--4-col" ng-click='addTemplate(0); getPuestos();'>
 					  PUESTOS
 					</button>
 					<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-cell--4-col" ng-click='addTemplate(1);'>
@@ -53,7 +53,50 @@
 				<div class="mdl-cell mdl-cell--3-col">Turno</div>
 				<div class="mdl-cell mdl-cell--3-col">Empleado</div>
 			</div>
+			<div class="mdl-grid" ng-repeat='puesto in puestos'>
+				<div class="mdl-cell mdl-cell--3-col">{{puesto.DEP_DESC}}</div>
+				<div class="mdl-cell mdl-cell--3-col">{{puesto.EMPYNT_DESC}}</div>
+				<div class="mdl-cell mdl-cell--3-col">{{puesto.TTU_DESC}}</div>
+				<div class="mdl-cell mdl-cell--3-col">{{puesto.PER_NAME}} {{puesto.PER_MIDNAME}} {{puesto.PER_LAST_NAME}} {{puesto.PER_S_LAST_NAME}}</div>
+			</div>
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--3-col">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<select class="mdl-textfield__input" id="txtDep" ng-model="departament" ng-options="depS.DEP_DESC for depS in departamentList track by depS.DEP_ID">
+							<option value="">Select</option>
+						</select>
+						<label class="mdl-textfield__label" for="txtDep"></label>
+					</div>
+				</div>
+				<div class="mdl-cell mdl-cell--3-col">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<select class="mdl-textfield__input" id="txtEmp" ng-model="empNom" ng-options="empL.EMPYNT_DESC for empL in employList track by empL.EMPYNT_ID">
+							<option value="">Select</option>
+						</select>
+						<label class="mdl-textfield__label" for="txtEmp"></label>
+					</div>
+				</div>
+				<div class="mdl-cell mdl-cell--3-col">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<select class="mdl-textfield__input" id="txtTurn" ng-model="turnNom" ng-options="turnL.TTU_DESC for turnL in turnList track by turnL.TTU_ID">
+							<option value="">Select</option>
+						</select>
+						<label class="mdl-textfield__label" for="txtTurn"></label>
+						</div>
+				</div>
+				<div class="mdl-cell mdl-cell--3-col">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<select class="mdl-textfield__input" id="txtPerson" ng-model="empNom" ng-options="empName.PER_NAME+' '+empName.PER_MIDNAME+' '+empName.PER_LAST_NAME+' '+empName.PER_S_LAST_NAME for empName in employeePersonList track by empName.EMP_ID">
+							<option value="">Select</option>
+						</select>
+						<label class="mdl-textfield__label" for="txtPerson"></label>
+					</div>
+				</div>
+			</div>
 		</div>
+
+
+
 		<div id='impuestoDiv'>
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--3-col">Empleado</div>
@@ -66,6 +109,3 @@
 	<!--aqui fin las vistas-->
 
 </div>
-
-
-

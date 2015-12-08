@@ -22,6 +22,10 @@
 		include('mvc/model/DA/journalDA.php');
 	}elseif(strpos($direct, "conceptDA") !== false){
 		include('mvc/model/DA/conceptDA.php');
+	}elseif(strpos($direct, "nominaDA") !== false){
+		include('mvc/model/DA/nominaDA.php');
+	}elseif(strpos($direct, "typeTurnDA") !== false){
+		include('mvc/model/DA/turnDA.php');
 	}
 
 ?>
