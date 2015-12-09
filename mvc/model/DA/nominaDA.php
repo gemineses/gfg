@@ -17,7 +17,7 @@
 		echo json_encode($arr);
 	}
 	function getAllImpuestos($conn){
-		$sql = 'SELECT * FROM DEPARTAMENT NATURAL JOIN EMPLOYMENT NATURAL JOIN TYPE_TURN NATURAL JOIN EMPLOYEE NATURAL JOIN PERSON NATURAL JOIN EMPLOY_TURN;';
+		$sql = 'SELECT * FROM VW_NOMINA_EMPLEADO';
 		$result = mysql_query($sql);
 		$arr = array();
 		while($row = mysql_fetch_array($result)){
@@ -31,6 +31,8 @@
 		mysql_query($sql);
 	}
 
+
+
 	//entra a funciones
 	$uri = $_SERVER['REQUEST_URI'];
 	$direct = substr($uri, 8);
@@ -38,7 +40,7 @@
 	if(strpos($direct, "getPuestos") !== false){
 		getAllPuestos($conn);
 	}elseif(strpos($direct, "getImpuestos") !== false){
-		setAllImpuestos($conn);
+		getAllImpuestos($conn);
 	}
 
 	//finaliza conexion

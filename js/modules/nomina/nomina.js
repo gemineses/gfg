@@ -27,14 +27,22 @@ mainApp.controller('ctrlNomina', function($scope){
 		});
 	};
 
-	$scope.getImpuestos = function(){
 
+	$scope.impuestos='';
+
+	$scope.getImpuestos = function(){
+		$.ajax({
+			url: 'da/nominaDA/getImpuestos',
+			type: 'post',
+			success: function(json) {
+				$scope.impuestos = JSON.parse(json);
+			}
+		});
 	};
 
 
-
-
-
+	$scope.getPuestos();
+	$scope.getImpuestos();
 
 
 
@@ -91,7 +99,21 @@ mainApp.controller('ctrlNomina', function($scope){
 			}
 		});
 	};
-	
+
+	$scope.conceptList = '';
+	$scope.consultaCatalogo = function(){
+		$.ajax({
+			url: 'da/conceptDA/getAll',
+			type: 'post',
+			success: function(json) {
+				$scope.$apply(function () {
+	            	$scope.conceptList = jQuery.parseJSON(json);
+	        	});
+			}
+		});
+	};
+
+	$scope.consultaCatalogo();
 	$scope.getDepartaments();
 	$scope.getEmploy();
 	$scope.getTurn();
