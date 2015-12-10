@@ -16,6 +16,7 @@
 		}
 		echo json_encode($arr);
 	}
+	
 	function getAllImpuestos($conn){
 		$sql = 'SELECT * FROM VW_NOMINA_EMPLEADO';
 		$result = mysql_query($sql);
@@ -25,13 +26,18 @@
 		}
 		echo json_encode($arr);
 	}
-	function setNew($conn){
+	
+	function setNewPuesto($conn){
 		//TODO: dejar de tirar el query asi de feo y usar los objetos de la carpeta obj y agregar el logo y el color
-		$sql = "INSERT INTO ACCOUNT VALUES(0, '".$_POST['txtName']."', '".$_POST['txtEmail']."', md5('".$_POST['txtPass']."'), ".$_POST['txtComp'].")";
+		$sql = "INSERT INTO EMPLOY_TURN VALUES(0, ".$_POST['txtTypeTurn'].", ".$_POST['txtEmpId'].", ".$_POST['txtEmpntId'].")";
 		mysql_query($sql);
 	}
 
-
+	function setNewImpuesto($conn){
+		//TODO: dejar de tirar el query asi de feo y usar los objetos de la carpeta obj y agregar el logo y el color
+		$sql = "INSERT INTO EMPLOY_CONCEPT VALUES(0, ".$_POST['txtEmpTrnId'].", ".$_POST['txtConceptId'].", ".$_POST['txtAmmount'].")";
+		mysql_query($sql);
+	}
 
 	//entra a funciones
 	$uri = $_SERVER['REQUEST_URI'];
@@ -41,6 +47,10 @@
 		getAllPuestos($conn);
 	}elseif(strpos($direct, "getImpuestos") !== false){
 		getAllImpuestos($conn);
+	}elseif(strpos($direct, "setNewPuesto") !== false){
+		setNewPuesto($conn);
+	}elseif(strpos($direct, "setNewImpuesto") !== false){
+		setNewImpuesto($conn);
 	}
 
 	//finaliza conexion

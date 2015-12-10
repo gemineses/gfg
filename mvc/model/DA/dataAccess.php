@@ -26,6 +26,8 @@
 		include('mvc/model/DA/nominaDA.php');
 	}elseif(strpos($direct, "typeTurnDA") !== false){
 		include('mvc/model/DA/turnDA.php');
+	}elseif(strpos($direct, "descargasDA") !== false){
+		include('mvc/model/DA/descargasDA.php');
 	}
 
 ?>

@@ -119,4 +119,82 @@ mainApp.controller('ctrlNomina', function($scope){
 	$scope.getTurn();
 	$scope.getEmployeePerson();
 
+	$scope.setNewPuesto = function(){
+		var form = document.createElement('form');
+		var inputEmploy = document.createElement('input');
+		var inputTurn = document.createElement('input');
+		var inputEmployee = document.createElement('input');
+		
+
+		form.method = 'POST';
+		form.action = '';
+
+		inputEmploy.value = document.getElementById('txtEmp').value;
+		inputEmploy.name = 'txtTypeTurn';
+		form.appendChild(inputEmploy);
+
+		inputTurn.value = document.getElementById('txtTurn').value;
+		inputTurn.name = 'txtEmpId';
+		form.appendChild(inputTurn);
+
+		inputEmployee.value = document.getElementById('txtPerson').value;
+		inputEmployee.name = 'txtEmpntId';
+		form.appendChild(inputEmployee);
+
+		//TODO: hacer una validacion en caso de que llegue vacio
+		document.body.appendChild(form);
+
+		var str = $( "form" ).serialize();
+
+		console.log(str);
+
+		$.ajax({
+			url: 'da/nominaDA/setNewPuesto',
+			data: str,
+			type: 'post',
+			success: function() {
+				location.reload();
+			}
+		});
+	};
+
+
+	$scope.setNewImpuesto = function(){
+		var form = document.createElement('form');
+		var txtEmpTrnId = document.createElement('input');
+		var txtConceptId = document.createElement('input');
+		var txtAmmount = document.createElement('input');
+		
+
+		form.method = 'POST';
+		form.action = '';
+
+		txtEmpTrnId.value = document.getElementById('txtPersonImp').value;
+		txtEmpTrnId.name = 'txtEmpTrnId';
+		form.appendChild(txtEmpTrnId);
+
+		txtConceptId.value = document.getElementById('txtConcept').value;
+		txtConceptId.name = 'txtConceptId';
+		form.appendChild(txtConceptId);
+
+		txtAmmount.value = document.getElementById('txtAmmount').value;
+		txtAmmount.name = 'txtAmmount';
+		form.appendChild(txtAmmount);
+
+		//TODO: hacer una validacion en caso de que llegue vacio
+		document.body.appendChild(form);
+
+		var str = $( "form" ).serialize();
+
+		console.log(str);
+
+		$.ajax({
+			url: 'da/nominaDA/setNewImpuesto',
+			data: str,
+			type: 'post',
+			success: function() {
+				location.reload();
+			}
+		});
+	};
 });

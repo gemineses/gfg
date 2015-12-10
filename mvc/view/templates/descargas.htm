@@ -1,0 +1,24 @@
+<div class="mdl-grid" style="background-color:#FFF;" ng-app="mainApp" ng-controller="ctrlDescargas">
+	<div class="mdl-cell mdl-cell--12-col">
+		<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--2-col">Consulta Nomina</div>
+		</div>
+		<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--2-col">Departamento</div>
+			<div class="mdl-cell mdl-cell--2-col">Puesto</div>
+			<div class="mdl-cell mdl-cell--3-col">Empleado</div>
+			<div class="mdl-cell mdl-cell--1-col">Turno</div>
+			<div class="mdl-cell mdl-cell--2-col">Concepto</div>
+			<div class="mdl-cell mdl-cell--2-col">Cantidad</div>
+		</div>
+		<div class="mdl-grid" ng-repeat="nom in listaNomina">
+			<div class="mdl-cell mdl-cell--2-col">{{nom.DEP_DESC}}</div>
+			<div class="mdl-cell mdl-cell--2-col">{{nom.EMPYNT_DESC}}</div>
+			<div class="mdl-cell mdl-cell--3-col">{{nom.PER_NAME}} {{nom.PER_MIDNAME}} {{nom.PER_LAST_NAME}} {{nom.PER_S_LAST_NAME}}</div>
+			<div class="mdl-cell mdl-cell--1-col">{{nom.TTU_DESC}}</div>
+			<div class="mdl-cell mdl-cell--2-col">{{nom.CPT_DESC}}</div>
+			<div class="mdl-cell mdl-cell--2-col">{{nom.AMMOUNT}}</div>
+		</div>
+	</div>
+</div>
+
